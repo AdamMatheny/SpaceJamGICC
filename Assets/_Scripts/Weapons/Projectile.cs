@@ -28,7 +28,7 @@ namespace Assets._Scripts.Weapons
         protected virtual void DealDamage(Enemy enemy)
         {
             //ProjectileAnimator.ShowHitAnimation;
-            enemy.EnemyHealthComponent.TakeDamage(Damage);
+            enemy.EnemyShipDie();
         }
 
         void Update()
