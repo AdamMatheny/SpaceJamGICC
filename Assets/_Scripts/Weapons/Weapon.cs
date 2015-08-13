@@ -17,6 +17,29 @@ namespace Assets._Scripts.Weapons
 		public int UpgradedDamage;
 		public float UpgradedSpeed;
 		public float UpgradedFireRate;
+		public float UpgradedDuration;
+		public float UpgradedDurationStart;
+
+		public void Start(){
+
+			UpgradedDurationStart = UpgradedDuration;
+		}
+
+		public void Update(){
+
+			if (isUpgraded) {
+
+				if (UpgradedDuration > 0) {
+
+					UpgradedDuration -= Time.deltaTime;
+				} else {
+						
+					isUpgraded = false;
+					UpgradedDuration = UpgradedDurationStart;
+				}
+
+			}
+		}
 
 		[Header("Upgraded Projectile")] // ~ Jonathan
 		public Projectile UpgradedWeaponProjectile;

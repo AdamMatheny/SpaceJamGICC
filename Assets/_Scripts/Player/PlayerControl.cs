@@ -22,6 +22,7 @@ namespace Assets._Scripts.Player
 
         void Update()
         {
+
             if (Input.GetAxis(HorizontalAxisName) >= AxisDeadZone || Input.GetAxis(HorizontalAxisName) <= -AxisDeadZone)
             {
                 gameObject.transform.Translate(Input.GetAxis(HorizontalAxisName) * FlySpeed * Time.deltaTime, 0, 0);
@@ -37,7 +38,5 @@ namespace Assets._Scripts.Player
                 gameObject.GetComponent<PlayerBase>().PlayerWeaponsComponent.ShootBaseWeapon();
             }
         }
-
-
     }
 }
