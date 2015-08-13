@@ -16,7 +16,7 @@ namespace Assets._Scripts.Weapons
 		public bool isUpgraded; 
 		public int UpgradedDamage;
 		public float UpgradedSpeed;
-		public float UpgradedFireRate;
+		//public float UpgradedFireRate;
 		public float UpgradedDuration;
 		public float UpgradedDurationStart;
 
