@@ -10,12 +10,12 @@ namespace Assets._Scripts.Weapons
 			{
 				if(!isUpgraded){
 					
-					Debug.Log("Created a basic bullet.");
+					//Debug.Log("Created a basic bullet.");
 					var spawnedProjectile = (Projectile)Instantiate(WeaponProjectile, gameObject.transform.position, gameObject.transform.rotation);
 					spawnedProjectile.Init(Damage, Speed);
 				}else{
 					
-					Debug.Log("Created an upgraded triple bullet.");
+					//Debug.Log("Created an upgraded triple bullet.");
 
 					var spawnedProjectile = (Projectile)Instantiate(WeaponProjectile, gameObject.transform.position, gameObject.transform.rotation);
 					spawnedProjectile.Init(UpgradedDamage, UpgradedSpeed);
