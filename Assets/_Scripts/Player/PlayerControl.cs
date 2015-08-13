@@ -33,10 +33,11 @@ namespace Assets._Scripts.Player
                 gameObject.transform.Translate(0,Input.GetAxis(VerticalAxisName) * FlySpeed * Time.deltaTime, 0);
             }
 
-            if (Input.GetKeyDown(FireButton))
+			//No need for this since there will be auto fire ~ Jonathan
+            /*if (Input.GetKeyDown(FireButton))
             {
                 gameObject.GetComponent<PlayerBase>().PlayerWeaponsComponent.ShootBaseWeapon();
-            }
+            }*/
         }
     }
 }
