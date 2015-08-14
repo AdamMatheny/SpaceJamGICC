@@ -16,13 +16,13 @@ namespace Assets._Scripts.Player
 
         public void ShootBaseWeapon()
         {
-            BaseWeapon.Shoot(false); //Giving false because it doens't affect
+            BaseWeapon.Shoot(null); 
             AudioManager.instance.PlayerRedShipSound(ShipRedSoundType.ShootBasic);
         }
 
-        public void ShootSuperWeapon1(bool isPlayer1)
+		public void ShootSuperWeapon1(GameObject playerToAffect)
         {
-            SuperWeapon1.Shoot(isPlayer1);
+            SuperWeapon1.Shoot(playerToAffect);
         }
 
 		public void Start(){

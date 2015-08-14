@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Assets._Scripts.Player;
+using Assets._Scripts.Managers;
 
 namespace Assets._Scripts.AI
 {
@@ -19,6 +20,8 @@ namespace Assets._Scripts.AI
 
 		void Start()
 		{
+			gameObject.transform.parent = ObjectManager.instance.EnemyTransform;
+
 			mScoreKeeper = FindObjectOfType<ScoreKeeper>();
 			//Assign what player to be trying to attack ~Adam
 			foreach(PlayerBase player in FindObjectsOfType<PlayerBase>())

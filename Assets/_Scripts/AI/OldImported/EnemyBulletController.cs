@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using Assets._Scripts.Managers;
 
 namespace Assets._Scripts.AI
 {
@@ -22,6 +22,8 @@ namespace Assets._Scripts.AI
 
 		public void Start()
 		{
+
+			gameObject.transform.parent = ObjectManager.instance.ContainerTransform;
 
 			//Used for firing in a particular pattern (i.e. rotational pattern on boss horns)~Adam
 			if (mFixedFireDir) 

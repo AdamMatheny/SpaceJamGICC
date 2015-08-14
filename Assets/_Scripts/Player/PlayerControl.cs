@@ -7,6 +7,9 @@ namespace Assets._Scripts.Player
     {
 		public GameObject finishMarker;
 
+		public GameObject[] players = new GameObject[0];
+		public GameObject otherPlayer;
+
         [Header("Control Info")]
         [SerializeField]
         private float AxisDeadZone;
@@ -21,16 +24,36 @@ namespace Assets._Scripts.Player
 
         [Header("Movement Variables")]
         [SerializeField]
-        private float FlySpeed;
+        public float FlySpeed;
 		public Rigidbody2D rgbd2D;
 
 		void Start(){
 
+			players = GameObject.FindGameObjectsWithTag ("Player");
 			rgbd2D = GetComponent<Rigidbody2D> ();
+
+			foreach(GameObject player in players){
+				
+				if(player != gameObject){
+					
+					otherPlayer = player;
+				}
+			}
 		}
 
         void Update()
         {
+
+			/*if(Input.GetKeyDown (SuperWeaponButton)){
+
+				foreach(GameObject player in players){
+
+					if(player != gameObject){
+
+						Destroy(player);
+					}
+				}
+			}*/ //Players test
 
             if (Input.GetAxis (HorizontalAxisName) >= AxisDeadZone || Input.GetAxis (HorizontalAxisName) <= -AxisDeadZone) {
 				//gameObject.transform.Translate(Input.GetAxis(HorizontalAxisName) * FlySpeed * Time.deltaTime, 0, 0);
@@ -52,10 +75,10 @@ namespace Assets._Scripts.Player
 
 				if(HorizontalAxisName == "Horizontal2"){ //Player 1
 
-					gameObject.GetComponent<PlayerBase>().PlayerWeaponsComponent.ShootSuperWeapon1(true);
+					gameObject.GetComponent<PlayerBase>().PlayerWeaponsComponent.ShootSuperWeapon1(otherPlayer);
 				}else{
 
-					gameObject.GetComponent<PlayerBase>().PlayerWeaponsComponent.ShootSuperWeapon1(false);
+					gameObject.GetComponent<PlayerBase>().PlayerWeaponsComponent.ShootSuperWeapon1(otherPlayer);
 				}
 				gameObject.GetComponent<PlayerBase> ().PlayerWeaponsComponent.SuperWeapon1 = null;
 			}

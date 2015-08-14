@@ -6,17 +6,11 @@ namespace Assets._Scripts.Weapons
 	public class SuperVisionTween : Weapon
 	{
 		
-		public override void Shoot(bool isPlayer1){
+		public override void Shoot(GameObject playerToAffect){
 			
 			try
 			{
-				if(isPlayer1){
-					
-					Debug.Log("Screw with player two's camera.!");
-				}else{
-					
-					Debug.Log("Screw with player one's camera.!");
-				}
+
 			}
 			catch
 			{

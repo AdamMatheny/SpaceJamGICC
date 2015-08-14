@@ -6,17 +6,11 @@ namespace Assets._Scripts.Weapons
 	public class SuperEnemyDisplacement : Weapon
 	{
 		
-		public override void Shoot(bool isPlayer1){
+		public override void Shoot(GameObject playerToAffect){
 			
 			try
 			{
-				if(isPlayer1){
-					
-					Debug.Log("Displace enemies to player 2.");
-				}else{
-					
-					Debug.Log("Displace enemies to player 1");
-				}
+
 			}
 			catch
 			{

@@ -6,17 +6,11 @@ namespace Assets._Scripts.Weapons
 	public class SuperWeaponDisable : Weapon
 	{
 		
-		public override void Shoot(bool isPlayer1){
+		public override void Shoot(GameObject playerToAffect){
 			
 			try
 			{
-				if(isPlayer1){
-					
-					Debug.Log("Disable player 2's weapon.");
-				}else{
-					
-					Debug.Log("Disable player 1's weapon.");
-				}
+
 			}
 			catch
 			{

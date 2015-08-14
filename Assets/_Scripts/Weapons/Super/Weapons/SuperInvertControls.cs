@@ -1,22 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets._Scripts.Player;
 
 namespace Assets._Scripts.Weapons
 {
 	public class SuperInvertControls : Weapon
 	{
-		
-		public override void Shoot(bool isPlayer1){
+		public override void Shoot(GameObject playerToAffect){
 			
 			try
 			{
-				if(isPlayer1){
-
-					Debug.Log("Screw with player two's controls.!");
-				}else{
-
-					Debug.Log("Screw with player one's controls.!");
-				}
+				playerToAffect.gameObject.GetComponent<PlayerControl> ().FlySpeed *= -1;
 			}
 			catch
 			{
