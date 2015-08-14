@@ -47,6 +47,7 @@ namespace Assets._Scripts.Managers
 
             Player1Ship.gameObject.transform.parent = PlayersContainer;
             Player2Ship.gameObject.transform.parent = PlayersContainer;
+			FindObjectOfType<ScoreKeeper>().enabled = true;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using Assets._Scripts.Player;
 
 namespace Assets._Scripts.AI
 {
@@ -134,6 +134,11 @@ namespace Assets._Scripts.AI
 					Destroy(other.gameObject);
 					Destroy(this.gameObject);
 				}
+			}
+			if(other.GetComponent<PlayerBase>() != null)
+			{
+				other.GetComponent<PlayerBase>().PlayerControlComponent.ReduceSpeed ();
+				Destroy(this.gameObject);
 			}
 
 		}//END of OnTriggerEnter()

@@ -40,7 +40,10 @@ public class ScoreKeeper : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-	
+		if(mRoundSuperPrefabs[0] != null)
+		{
+			Instantiate(mRoundSuperPrefabs[0], Vector3.zero, Quaternion.identity);
+		}
 	}
 	
 	// Update is called once per frame

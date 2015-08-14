@@ -22,19 +22,35 @@ namespace Assets._Scripts.Player
         [Header("Movement Variables")]
         [SerializeField]
         private float FlySpeed;
+		private float mSpeedMod = 100;
+		private float mSpeedReductionTimer = 3f;
+		private bool mSlowed = false;
+
 		public Rigidbody2D rgbd2D;
 
-		void Start(){
+		void Start()
+		{
 
 			rgbd2D = GetComponent<Rigidbody2D> ();
 		}
 
         void Update()
         {
+			if(mSlowed)
+			{
+				mSpeedReductionTimer -= Time.deltaTime;
+				if(mSpeedReductionTimer <= 0f)
+				{
+					mSlowed = false;
+					mSpeedMod = 100;
+					mSpeedReductionTimer = 3f;
+				}
+			}
+
 
             if (Input.GetAxis (HorizontalAxisName) >= AxisDeadZone || Input.GetAxis (HorizontalAxisName) <= -AxisDeadZone) {
 				//gameObject.transform.Translate(Input.GetAxis(HorizontalAxisName) * FlySpeed * Time.deltaTime, 0, 0);
-				rgbd2D.velocity = new Vector2 (Input.GetAxis (HorizontalAxisName) * FlySpeed * Time.deltaTime, rgbd2D.velocity.y);
+				rgbd2D.velocity = new Vector2 (Input.GetAxis (HorizontalAxisName) * FlySpeed * mSpeedMod * Time.deltaTime, rgbd2D.velocity.y);
 			} else {
 
 				rgbd2D.velocity = new Vector2 (0, rgbd2D.velocity.y);
@@ -42,7 +58,7 @@ namespace Assets._Scripts.Player
 
             if (Input.GetAxis (VerticalAxisName) >= AxisDeadZone || Input.GetAxis (VerticalAxisName) <= -AxisDeadZone) {
 				//gameObject.transform.Translate(0,Input.GetAxis(VerticalAxisName) * FlySpeed * Time.deltaTime, 0);
-				rgbd2D.velocity = new Vector2 (rgbd2D.velocity.x, Input.GetAxis (VerticalAxisName) * FlySpeed * Time.deltaTime);
+				rgbd2D.velocity = new Vector2 (rgbd2D.velocity.x, Input.GetAxis (VerticalAxisName) * FlySpeed * mSpeedMod * Time.deltaTime);
 			} else {
 
 				rgbd2D.velocity = new Vector2 (rgbd2D.velocity.x, 0);
@@ -50,10 +66,13 @@ namespace Assets._Scripts.Player
 
 			if (Input.GetKeyDown (SuperWeaponButton) && (gameObject.GetComponent<PlayerBase> ().PlayerWeaponsComponent.SuperWeapon1 != null)) {
 
-				if(HorizontalAxisName == "Horizontal2"){ //Player 1
+				if(HorizontalAxisName == "Horizontal2") //Player 2
+				{
 
 					gameObject.GetComponent<PlayerBase>().PlayerWeaponsComponent.ShootSuperWeapon1(true);
-				}else{
+				}
+				else
+				{
 
 					gameObject.GetComponent<PlayerBase>().PlayerWeaponsComponent.ShootSuperWeapon1(false);
 				}
@@ -76,5 +95,13 @@ namespace Assets._Scripts.Player
             FireButton = ControlsManager.instance.Player2Controls.BasicFireButton;
             SuperWeaponButton = ControlsManager.instance.Player2Controls.MegaWeaponFireButton;
         }
+
+		//For reducing speed when hit ~Adam
+		public void ReduceSpeed()
+		{
+			mSpeedMod = 50f;
+			mSlowed = true;
+			mSpeedReductionTimer = 3f;
+		}
     }
 }
