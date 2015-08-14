@@ -2,7 +2,7 @@
 
 namespace Assets._Scripts.UI
 {
-    public enum ScreenType {None = 0, MainMenu = 1 , PlayScreen = 2}
+    public enum ScreenType {None = 0, MainMenu = 1 , PlayScreen = 2, SelectShip = 3}
 
     public class GUIScreen : MonoBehaviour
     {
