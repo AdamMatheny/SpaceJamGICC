@@ -54,7 +54,7 @@ namespace Assets._Scripts.Player{
 			{
 
 				Destroy(gameObject);
-				other.gameObject.GetComponent<PlayerControl> ().finishMarker.GetComponent<FinishLineManager> ().SlowDown(1);
+				//other.gameObject.GetComponent<PlayerControl> ().finishMarker.GetComponent<FinishLineController> ().SlowDown(1);
 			}
 		}
 	}

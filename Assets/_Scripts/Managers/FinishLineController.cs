@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FinishLineManager : MonoBehaviour {
+public class FinishLineController : MonoBehaviour {
 
 	public float speed;
 	public float slowDownTime;	

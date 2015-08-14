@@ -270,7 +270,11 @@ namespace Assets._Scripts.UI
             //SET UP SELECTED VEHICLES IN PLAYERMANAGER
 
             GUIManager.instance.ShowScreen(ScreenType.PlayScreen);
-            
+            VehiclesManager.instance.SetUpPlayerShips((VehicleType)CurrectPlayer1Ship - 1, (VehicleType)CurrectPlayer2Ship - 1);
+            VehiclesManager.instance.SpawnShips();
+
+            Player1Locked = false;
+            Player2Locked = false;
         }
     }
 }

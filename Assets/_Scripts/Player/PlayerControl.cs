@@ -59,5 +59,21 @@ namespace Assets._Scripts.Player
 				gameObject.GetComponent<PlayerBase> ().PlayerWeaponsComponent.SuperWeapon1 = null;
 			}
         }
+
+        public void SetUpPlayer1Controls()
+        {
+            HorizontalAxisName = "Horizontal1";
+            VerticalAxisName = "Vertical1";
+            FireButton = KeyCode.N;
+            SuperWeaponButton = KeyCode.M;
+        }
+
+        public void SetUpPlayer2Controls()
+        {
+            HorizontalAxisName = "Horizontal2";
+            VerticalAxisName = "Vertical2";
+            FireButton = KeyCode.X;
+            SuperWeaponButton = KeyCode.C;
+        }
     }
 }
