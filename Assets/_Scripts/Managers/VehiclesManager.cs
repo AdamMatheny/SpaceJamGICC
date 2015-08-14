@@ -14,6 +14,8 @@ namespace Assets._Scripts.Managers
         private Transform Player1SpawningPoint;
         [SerializeField]
         private Transform Player2SpawningPoint;
+        [SerializeField]
+        private Transform PlayersContainer;
 
         private VehicleType Player1ShipType;
         private VehicleType Player2ShipType;
@@ -40,6 +42,11 @@ namespace Assets._Scripts.Managers
             Player2Ship.PlayerControlComponent.SetUpPlayer2Controls();
             Player1Ship.mPlayerNumber = 1;
             Player2Ship.mPlayerNumber = 2;
+
+            if (PlayersContainer == null) return;
+
+            Player1Ship.gameObject.transform.parent = PlayersContainer;
+            Player2Ship.gameObject.transform.parent = PlayersContainer;
         }
     }
 }
