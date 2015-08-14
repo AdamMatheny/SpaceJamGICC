@@ -50,13 +50,17 @@ namespace Assets._Scripts.AI
 			if(mTargetPlayerNumber == 1)
 			{
 				mScoreKeeper.mPlayer1Kills++;
+				mScoreKeeper.mPlayer1RoundScore++;
 			}
 			else if(mTargetPlayerNumber == 2)
 			{
 				mScoreKeeper.mPlayer2Kills++;
+				mScoreKeeper.mPlayer2RoundScore++;
 			}
-			Instantiate(mDeathEffect, transform.position, Quaternion.identity);
-
+			if(mDeathEffect!=null)
+			{
+				Instantiate(mDeathEffect, transform.position, Quaternion.identity);
+			}
 			Destroy(this.gameObject);
 		}
 

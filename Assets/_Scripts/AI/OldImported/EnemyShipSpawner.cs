@@ -9,16 +9,6 @@ namespace Assets._Scripts.AI
 		public ScoreKeeper mScoreKeeper;
 
 
-		//Set this to true if we want this spawner to do more than one wave of enemies
-		public bool mSpawnMultipleWaves = false;
-		public float mWaveRefreshTimeMin = 30f;
-		public float mWaveRefreshTimeMax = 60f;
-
-
-		[SerializeField] private bool mLimitedWaveRespawns = false;
-		[SerializeField] private int mMaxWaveRespawns = 3;
-		[SerializeField] private int mRespawnWaveCount = 0;
-
 		[SerializeField] private bool mUseSwarm;
 		[SerializeField] private bool mRushAtPlayer;
 
@@ -29,6 +19,7 @@ namespace Assets._Scripts.AI
 		[SerializeField] private bool mUsingLoopPoint = false;
 		//The point that the spawned enemies will loop around if the above is true
 		[SerializeField] private GameObject mLoopPoint;
+		[SerializeField] private GameObject mFinalTargetPoint;
 
 		//*****Values for overriding spawned enemy properties******
 
@@ -62,27 +53,56 @@ namespace Assets._Scripts.AI
 		private float mSpawnInterval;
 		//How long to wait before enemies are first spawned
 		public float mWaveStartTime = 2f;
+		public int mRequiredKillsToStart = 0;
 		//Which type of enemy to spawn
 		public GameObject mEnemyToSpawn;
 		//How many enemies to spawn per wave
 		[SerializeField] private int mMaxEnemySpawn = 5;
 		//How many enemies we've spawned so far
 		[HideInInspector] public int mSpawnCounter = 0;
-		
+
+
+		[SerializeField] private SwarmSpecialMovement mSwarmSpecialBehavior;
+
 		// Use this for initialization
 		void Start () 
 		{
 			mSpawnInterval = mDefaultSpawnInterval;
+
+			mScoreKeeper = FindObjectOfType<ScoreKeeper>();
 		}//END of Start()
 		
 		// Update is called once per frame
 		void Update () 
 		{
-			mWaveStartTime -= Time.deltaTime;
-			
+
+			switch (mPlayerSideNumber)
+			{
+			case 1:
+				if(mRequiredKillsToStart <= mScoreKeeper.mPlayer1RoundScore)
+				{
+					mWaveStartTime -= Time.deltaTime;
+				}
+				break;
+			case 2:
+				if(mRequiredKillsToStart <= mScoreKeeper.mPlayer2RoundScore)
+				{
+					mWaveStartTime -= Time.deltaTime;
+				}
+				break;
+			default:
+				mWaveStartTime -= Time.deltaTime;
+				break;
+			}
+
+
 			if (mWaveStartTime <= 0.0f && mSpawning)
 			{
 				SpawnEnemies();
+				if(mSwarmSpecialBehavior != null)
+				{
+					mSwarmSpecialBehavior.enabled = true;
+				}
 			}
 		}//END of Update()
 
@@ -93,6 +113,7 @@ namespace Assets._Scripts.AI
 			if (mSpawnInterval <= 0.0f)
 			{
 				GameObject NewEnemy = Instantiate(mEnemyToSpawn, transform.position, Quaternion.identity) as GameObject;
+				NewEnemy.GetComponent<Enemy>().mTargetPlayerNumber = mPlayerSideNumber;
 				NewEnemy.GetComponent<EnemyMovement>().mSwarmGrid = mTargetSwarmGrid;
 
 				NewEnemy.GetComponent<EnemyMovement>().mRushAtPlayer = mRushAtPlayer;
@@ -111,6 +132,10 @@ namespace Assets._Scripts.AI
 				if (mUsingLoopPoint && mLoopPoint != null)
 				{
 					NewEnemy.GetComponent<EnemyMovement>().mLoopPoint = this.mLoopPoint.transform.position;
+				}
+				if(mFinalTargetPoint != null)
+				{
+					NewEnemy.GetComponent<EnemyMovement>().mTargetRushPoint = this.mFinalTargetPoint.transform.position;
 				}
 
 				NewEnemy.GetComponent<EnemyMovement>().mLoopCircleTightness = mLoopOverrideTightnessAmount;
@@ -136,19 +161,8 @@ namespace Assets._Scripts.AI
 				{
 					mSpawnCounter = 0;
 
-					if (mSpawnMultipleWaves && (!mLimitedWaveRespawns || (mLimitedWaveRespawns && mRespawnWaveCount < mMaxWaveRespawns) ) )
-					{
-						//Set the time to spawn a new wave to a random amount
-						mWaveStartTime = Random.Range(mWaveRefreshTimeMin, mWaveRefreshTimeMax);
-						mSpawning = true;
-						mSpawnCounter = 0;
-						mRespawnWaveCount++;
-					}
-					else
-					{
-						mSpawning = false;
+					mSpawning = false;
 
-					}
 				}
 			}
 		}

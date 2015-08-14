@@ -4,7 +4,8 @@ using Assets._Scripts.Managers;
 using Assets._Scripts.Weapons;
 
 namespace Assets._Scripts.Player{
-	public class EnemyMovementTestScript : MonoBehaviour {
+	public class EnemyMovementTestScript : MonoBehaviour 
+	{
 
 		public GameObject ScoreKeeper;
 
@@ -14,27 +15,32 @@ namespace Assets._Scripts.Player{
 		public Rigidbody2D rgbd2D;
 	
 		// Function called when the enemy is created
-		public void Start(){
+		public void Start()
+		{
 
 			rgbd2D = gameObject.GetComponent<Rigidbody2D> ();
 			rgbd2D.velocity = new Vector2 (rgbd2D.velocity.x, speed);
-			ScoreKeeper = GameObject.Find ("ScoreKeeper");
+			ScoreKeeper = FindObjectOfType<ScoreKeeper>().gameObject;
 			Destroy (gameObject, 10);
 		}
 
-		public void Update(){
+		public void Update()
+		{
 
 			gameObject.transform.parent = ObjectManager.instance.EnemyTransform;
 		}
 
 		public void OnTriggerEnter2D(Collider2D other){
 
-			if (other.tag == "Bullet") {
+			if (other.tag == "Bullet") 
+			{
 
 				if(other.gameObject.GetComponent<BasicProjectile> ().isPlayerOne){
 
 					ScoreKeeper.GetComponent <ScoreKeeper> ().mPlayer1Kills += 1;
-				}else{
+				}
+				else
+				{
 
 					ScoreKeeper.GetComponent <ScoreKeeper> ().mPlayer2Kills += 1;
 				}
@@ -44,7 +50,8 @@ namespace Assets._Scripts.Player{
 				//Debug.Log("Hit Bullet");
 			}
 
-			if (other.tag == "Player") {
+			if (other.tag == "Player") 
+			{
 
 				Destroy(gameObject);
 				other.gameObject.GetComponent<PlayerControl> ().finishMarker.GetComponent<FinishLineManager> ().SlowDown(1);

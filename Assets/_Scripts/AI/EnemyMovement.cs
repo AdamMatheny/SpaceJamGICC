@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using Assets._Scripts.Player;
-
+using Assets._Scripts.Weapons;
 
 namespace Assets._Scripts.AI
 {
@@ -18,13 +18,14 @@ namespace Assets._Scripts.AI
 		//Variables for the direciton and distance this unit has to go to reach whereever it is currently going
 		float targetDist;
 
-
+		Vector3 mOriginPoint;
 		public Vector3 mTargetRushPoint; //Were to end up if just flying across the screen
 		public bool mRushAtPlayer;
 
 
 		//Whether or not the ship has flown in a circle ~Adam
 		public bool mHasLooped = false;
+		bool mUsesLoop;
 		//The point thta the ship will fly in a circle around on its way to the swarm if it isn't null ~Adam
 		public Vector3 mLoopPoint;
 		//How tight of a circle the ship will fly in when it makes a loop.  Smaller absolute value == bigger loop.  Negative makes loop counter-clockwise ~Adam
@@ -66,6 +67,7 @@ namespace Assets._Scripts.AI
 
 		void Start()
 		{
+			mOriginPoint = transform.position;
 			if(mUseSwarm)
 			{
 				mSpeed = mFormSpeed;
@@ -78,7 +80,7 @@ namespace Assets._Scripts.AI
 			{
 				mSpeed = mDefaultSpeed;
 			}
-
+			mUsesLoop = !mHasLooped;
 		}
 
 		void Update()
@@ -138,7 +140,7 @@ namespace Assets._Scripts.AI
 
 					targetDist = Vector3.Distance(mLoopPoint,transform.position);
 
-					if(targetDist <= 1f)
+					if(targetDist <= 3f)
 					{
 						mCurrentAIState = AIState.FlightLooping;
 						mSwitchCoolDown = mLoopTime;
@@ -160,9 +162,24 @@ namespace Assets._Scripts.AI
 					targetDist = Vector3.Distance(mTargetRushPoint, transform.position);
 					if(targetDist <= 1f)
 					{
-						Destroy(this.gameObject);
+						transform.position = mOriginPoint;
+						mHasLooped = !mUsesLoop;
 					}
 				}
+			}
+		}//END of Update()
+
+		public void OnTriggerEnter2D(Collider2D other)
+		{
+			
+			if (other.tag == "Bullet") 
+			{
+				
+
+				Destroy(other.gameObject);
+				//Debug.Log("Hit Bullet");
+
+				GetComponent<Enemy>().EnemyShipDie ();
 			}
 		}
 
@@ -217,7 +234,7 @@ namespace Assets._Scripts.AI
 			transform.up += flightDirection;
 			transform.up.Normalize();
 
-			GetComponent<Rigidbody>().velocity = transform.up * mSpeed;
+			GetComponent<Rigidbody2D>().velocity = transform.up * mSpeed;
 
 
 
@@ -243,7 +260,7 @@ namespace Assets._Scripts.AI
 			transform.up.Normalize();
 
 			//Set the velocity to move in the cicle
-			GetComponent<Rigidbody>().velocity = transform.up * mSpeed;
+			GetComponent<Rigidbody2D>().velocity = transform.up * mSpeed;
 			
 
 			//Transitions to ApproachingSwarm AI state if the timer has run out and this unit is pointed towards its grid slot
