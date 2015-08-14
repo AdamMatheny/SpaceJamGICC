@@ -2,6 +2,8 @@
 using System.Collections;
 using Assets._Scripts.AI;
 using Assets._Scripts.Player;
+using UnityEngine.UI;
+
 
 public class ScoreKeeper : MonoBehaviour 
 {
@@ -34,8 +36,15 @@ public class ScoreKeeper : MonoBehaviour
 
 	void Awake()
 	{
-		DontDestroyOnLoad(this.gameObject);
+	//	DontDestroyOnLoad(this.gameObject);
 	}
+
+	//For UI display stuff
+	public Image[] mP1WinCounters;
+	public Text mP1MessageText;
+	public Image[] mP2WinCounters;
+	public Text mP2MessageText;
+
 
 	// Use this for initialization
 	void Start () 
@@ -77,42 +86,79 @@ public class ScoreKeeper : MonoBehaviour
 		mRoundWinner = winnerNumber;
 		mRoundOver = true;
 
+
+		if(mRoundWinner == 1)
+		{
+			mPlayer1Wins ++;
+		}
+		else if (mRoundWinner == 2)
+		{
+			mPlayer2Wins++;
+		}
+
 	}
 
 	void EndRound()
 	{
 		mRoundFinishTimer -= Time.deltaTime;
 
+
+		//Set message text
+		mP1MessageText.enabled = true;
+		mP2MessageText.enabled = true;
+
+		if(mPlayer1Wins >= 3)
+		{
+			mP1MessageText.text = "You Win!";
+			mP2MessageText.text = "You Lose!";
+		}
+		else if(mPlayer2Wins >= 3)
+		{
+			mP1MessageText.text = "You Lose!";
+			mP2MessageText.text = "You Win!";
+		}
+		else
+		{
+			mP1MessageText.text = "Round Complete!";
+			mP2MessageText.text = "Round Complete!";
+		}
+
+
+		for(int i = 1; i <= mP1WinCounters.Length; i++)
+		{
+			if(mPlayer1Wins >= i)
+			{
+				mP1WinCounters[i-1].enabled = true;
+			}
+		}
+		
+		for(int i = 1; i <= mP2WinCounters.Length; i++)
+		{
+			if(mPlayer2Wins >= i)
+			{
+				mP2WinCounters[i-1].enabled = true;
+			}
+		}
+
 		if(mRoundFinishTimer < 0f)
 		{
-			if(mRoundWinner == 1)
-			{
-				mPlayer1Wins ++;
-			}
-			else if (mRoundWinner == 2)
-			{
-				mPlayer2Wins++;
-			}
 
 			mRoundOver = false;
 
 			mRoundFinishTimer = 5f;
 
-			if(mPlayer1Wins >= 3 || mPlayer2Wins >= 3)
+			if(mPlayer1Wins >=3 || mPlayer2Wins >= 3)
 			{
-				if(mPlayer1Wins >= 3)
-				{
-					//Display Player 1 wins message `Adam
-				}
-				else if (mPlayer2Wins >= 3)
-				{
-					//Display Player 2 wins message `Adam
-				}
-
-
+				Application.LoadLevel(Application.loadedLevel);
 			}
 
+
+
 			mCurrentRound ++;
+			mP1MessageText.enabled = false;
+			mP2MessageText.enabled = false;
+
+
 
 			mPlayer1RoundScore = 0;
 			mPlayer2RoundScore = 0;
@@ -144,6 +190,11 @@ public class ScoreKeeper : MonoBehaviour
 				Instantiate(mRoundSuperPrefabs[mCurrentRound-1], Vector3.zero, Quaternion.identity);
 			}
 			mRoundWinner = 0;
+
+			if(mPlayer1Wins >=3 || mPlayer2Wins >= 3)
+			{
+				Application.LoadLevel(Application.loadedLevel);
+			}
 		}
 	}
 }
