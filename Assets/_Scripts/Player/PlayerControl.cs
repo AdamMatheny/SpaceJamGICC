@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Assets._Scripts.Managers;
 
 namespace Assets._Scripts.Player
 {
@@ -62,18 +63,18 @@ namespace Assets._Scripts.Player
 
         public void SetUpPlayer1Controls()
         {
-            HorizontalAxisName = "Horizontal1";
-            VerticalAxisName = "Vertical1";
-            FireButton = KeyCode.N;
-            SuperWeaponButton = KeyCode.M;
+            HorizontalAxisName = ControlsManager.instance.Player1Controls.HorizontalAxis;
+            VerticalAxisName = ControlsManager.instance.Player1Controls.VerticalAxis;
+            FireButton = ControlsManager.instance.Player1Controls.BasicFireButton;
+            SuperWeaponButton = ControlsManager.instance.Player1Controls.MegaWeaponFireButton;
         }
 
         public void SetUpPlayer2Controls()
         {
-            HorizontalAxisName = "Horizontal2";
-            VerticalAxisName = "Vertical2";
-            FireButton = KeyCode.X;
-            SuperWeaponButton = KeyCode.C;
+            HorizontalAxisName = ControlsManager.instance.Player2Controls.HorizontalAxis;
+            VerticalAxisName = ControlsManager.instance.Player2Controls.VerticalAxis;
+            FireButton = ControlsManager.instance.Player2Controls.BasicFireButton;
+            SuperWeaponButton = ControlsManager.instance.Player2Controls.MegaWeaponFireButton;
         }
     }
 }
