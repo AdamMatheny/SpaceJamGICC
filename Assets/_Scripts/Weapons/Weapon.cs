@@ -4,6 +4,7 @@ namespace Assets._Scripts.Weapons
 {
     public class Weapon : MonoBehaviour
     {
+
         [Header("Base Weapon Info")]
         public int Damage;
         public float Speed;

@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets._Scripts.Managers;
+using Assets._Scripts.Weapons;
 
 namespace Assets._Scripts.Player{
 	public class EnemyMovementTestScript : MonoBehaviour {
+
+		public GameObject ScoreKeeper;
 
 		// Public variable that contains the speed of the enemy
 		public int speed = -5;
@@ -15,6 +18,7 @@ namespace Assets._Scripts.Player{
 
 			rgbd2D = gameObject.GetComponent<Rigidbody2D> ();
 			rgbd2D.velocity = new Vector2 (rgbd2D.velocity.x, speed);
+			ScoreKeeper = GameObject.Find ("ScoreKeeper");
 			Destroy (gameObject, 10);
 		}
 
@@ -26,6 +30,14 @@ namespace Assets._Scripts.Player{
 		public void OnTriggerEnter2D(Collider2D other){
 
 			if (other.tag == "Bullet") {
+
+				if(other.gameObject.GetComponent<BasicProjectile> ().isPlayerOne){
+
+					ScoreKeeper.GetComponent <ScoreKeeper> ().mPlayer1Kills += 1;
+				}else{
+
+					ScoreKeeper.GetComponent <ScoreKeeper> ().mPlayer2Kills += 1;
+				}
 
 				Destroy(gameObject);
 				Destroy(other.gameObject);

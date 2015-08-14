@@ -7,6 +7,9 @@ namespace Assets._Scripts.Weapons
 {
     public class Projectile : MonoBehaviour
     {
+
+		public bool isPlayerOne;
+
         public Animator ProjectileAnimator;
 
         public int Damage;

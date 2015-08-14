@@ -5,6 +5,7 @@ namespace Assets._Scripts.Weapons
 {
 	public class BasicDoubleShot : Weapon
 	{
+
 		public override void Shoot(){
 			
 			try
