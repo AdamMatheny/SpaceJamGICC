@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets._Scripts.AI;
+using Assets._Scripts.Managers;
 
 namespace Assets._Scripts.Weapons
 {
@@ -13,12 +14,12 @@ namespace Assets._Scripts.Weapons
 
         public void Init(int damage, float flySpeed)
         {
-            Damage = damage;
-            FlySpeed = flySpeed;
+			Damage = damage;
+			FlySpeed = flySpeed;
 
-            //ProjectileAnimator.ShowSpawnAnimaton;
-            StartCoroutine("DieAfterTimeCoroutine");
-        }
+			//ProjectileAnimator.ShowSpawnAnimaton;
+			StartCoroutine ("DieAfterTimeCoroutine");
+		}
 
         protected virtual void Move()
         {
@@ -34,6 +35,7 @@ namespace Assets._Scripts.Weapons
         void Update()
         {
             Move();
+			gameObject.transform.parent = ObjectManager.instance.ContainerTransform;
         }
 
         private IEnumerator DieAfterTimeCoroutine()

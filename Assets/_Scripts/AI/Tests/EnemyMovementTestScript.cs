@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets._Scripts.Managers;
 
 namespace Assets._Scripts.Player{
 	public class EnemyMovementTestScript : MonoBehaviour {
@@ -15,6 +16,11 @@ namespace Assets._Scripts.Player{
 			rgbd2D = gameObject.GetComponent<Rigidbody2D> ();
 			rgbd2D.velocity = new Vector2 (rgbd2D.velocity.x, speed);
 			Destroy (gameObject, 10);
+		}
+
+		public void Update(){
+
+			gameObject.transform.parent = ObjectManager.instance.EnemyTransform;
 		}
 
 		public void OnTriggerEnter2D(Collider2D other){
