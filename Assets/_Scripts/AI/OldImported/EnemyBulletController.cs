@@ -65,7 +65,7 @@ namespace Assets._Scripts.AI
 			}
 
 		
-			GetComponent<Rigidbody> ().velocity = bulletForce;
+			GetComponent<Rigidbody2D> ().velocity = bulletForce;
 
 
 
@@ -83,7 +83,7 @@ namespace Assets._Scripts.AI
 				bulletForce = Vector3.Normalize (directionToPlayer) * mBulletSpeed;
 				transform.LookAt (mPlayer.transform.position);
 				transform.rotation = Quaternion.Euler (new Vector3 (90f, 0f, 0f) + transform.rotation.eulerAngles);
-				GetComponent<Rigidbody> ().velocity = bulletForce;
+				GetComponent<Rigidbody2D> ().velocity = bulletForce;
 
 			}
 
@@ -114,7 +114,7 @@ namespace Assets._Scripts.AI
 
 		}//END of Update()
 
-		void OnTriggerEnter (Collider other)
+		void  OnTriggerEnter2D(Collider2D other)
 		{
 
 			/*if (other.tag == "Enemy" && mMoveTowardsPlayer) 

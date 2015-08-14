@@ -12,7 +12,7 @@ namespace Assets._Scripts.AI
 
 		public ScoreKeeper mScoreKeeper;
 
-		float mBulletTimer;
+		[SerializeField] private float mBulletTimer;
 		public float mShootTimerDefault = 3f;
 
 		// Use this for initialization
@@ -24,11 +24,11 @@ namespace Assets._Scripts.AI
 			//Scale firing speed based on who is winning `Adam
 			if(mScoreKeeper != null && GetComponent<Enemy>().mTargetPlayerNumber == 1)
 			{
-				mBulletTimer = mShootTimerDefault/( (mScoreKeeper.mPlayer1Wins+1)/(mScoreKeeper.mPlayer2Wins+1) * (mScoreKeeper.mPlayer1Kills+1)/(mScoreKeeper.mPlayer2Kills+1) );
+				mBulletTimer = mShootTimerDefault/( (mScoreKeeper.mPlayer1Wins+1f)/(mScoreKeeper.mPlayer2Wins+1f) * (mScoreKeeper.mPlayer1Kills+1f)/(mScoreKeeper.mPlayer2Kills+1f) );
 			}
 			else if(mScoreKeeper != null && GetComponent<Enemy>().mTargetPlayerNumber == 2)
 			{
-				mBulletTimer = mShootTimerDefault/( (mScoreKeeper.mPlayer2Wins+1)/(mScoreKeeper.mPlayer1Wins+1) * (mScoreKeeper.mPlayer2Kills+1)/(mScoreKeeper.mPlayer1Kills+1) );
+				mBulletTimer = mShootTimerDefault/( (mScoreKeeper.mPlayer2Wins+1f)/(mScoreKeeper.mPlayer1Wins+1f) * (mScoreKeeper.mPlayer2Kills+1f)/(mScoreKeeper.mPlayer1Kills+1f) );
 			}
 
 		}
