@@ -45,7 +45,7 @@ namespace Assets._Scripts.Weapons
 		[Header("Upgraded Projectile")] // ~ Jonathan
 		public Projectile UpgradedWeaponProjectile;
 
-        public virtual void Shoot()
+        public virtual void Shoot(bool isPlayer1)
         {
             try
             {

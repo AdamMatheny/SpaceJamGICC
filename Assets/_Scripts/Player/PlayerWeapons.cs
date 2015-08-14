@@ -12,17 +12,17 @@ namespace Assets._Scripts.Player
 
         public Weapon BaseWeapon;
 
-        public Weapon SuperWeapon1;
+        public Weapon SuperWeapon1 = null;
 
         public void ShootBaseWeapon()
         {
-            BaseWeapon.Shoot();
+            BaseWeapon.Shoot(false); //Giving false because it doens't affect
             AudioManager.instance.PlayerRedShipSound(ShipRedSoundType.ShootBasic);
         }
 
-        public void ShootSuperWeapon1()
+        public void ShootSuperWeapon1(bool isPlayer1)
         {
-            SuperWeapon1.Shoot();
+            SuperWeapon1.Shoot(isPlayer1);
         }
 
 		public void Start(){

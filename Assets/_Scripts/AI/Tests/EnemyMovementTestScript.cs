@@ -2,6 +2,7 @@
 using System.Collections;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Weapons;
+using Assets._Scripts.Player;
 
 namespace Assets._Scripts.Player{
 	public class EnemyMovementTestScript : MonoBehaviour {
@@ -23,7 +24,8 @@ namespace Assets._Scripts.Player{
 		}
 
 		public void Update(){
-
+				
+			ScoreKeeper = GameObject.Find ("ScoreKeeper");
 			gameObject.transform.parent = ObjectManager.instance.EnemyTransform;
 		}
 
@@ -45,9 +47,27 @@ namespace Assets._Scripts.Player{
 			}
 
 			if (other.tag == "Player") {
+				if(other.gameObject.GetComponent<PlayerControl> ().HorizontalAxisName == "Horizontal2"){
+
+					if(ScoreKeeper.gameObject.GetComponent<ScoreKeeper> ().mPlayer1Kills >= 5){
+					
+						ScoreKeeper.gameObject.GetComponent<ScoreKeeper> ().mPlayer1Kills -= 5;
+					}else{
+
+						ScoreKeeper.gameObject.GetComponent<ScoreKeeper> ().mPlayer1Kills = 0;
+					}
+				}else{
+
+					if(ScoreKeeper.gameObject.GetComponent<ScoreKeeper> ().mPlayer2Kills >= 5){
+						
+						ScoreKeeper.gameObject.GetComponent<ScoreKeeper> ().mPlayer2Kills -= 5;
+					}else{
+						
+						ScoreKeeper.gameObject.GetComponent<ScoreKeeper> ().mPlayer2Kills = 0;
+					}
+				}
 
 				Destroy(gameObject);
-				other.gameObject.GetComponent<PlayerControl> ().finishMarker.GetComponent<FinishLineManager> ().SlowDown(1);
 			}
 		}
 	}
