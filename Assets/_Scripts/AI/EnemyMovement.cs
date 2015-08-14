@@ -181,6 +181,11 @@ namespace Assets._Scripts.AI
 
 				GetComponent<Enemy>().EnemyShipDie ();
 			}
+
+			if(other.GetComponent<PlayerBase>() != null)
+			{
+				other.GetComponent<PlayerBase>().PlayerControlComponent.ReduceSpeed ();
+			}
 		}
 
 		void ApproachSwarm()
