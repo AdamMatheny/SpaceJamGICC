@@ -4,7 +4,7 @@ namespace Assets._Scripts.Weapons
 {
     public class BasicCanon : Weapon
     {
-		public override void Shoot(){
+		public override void Shoot(bool isPlayer1){
 
 			try
 			{

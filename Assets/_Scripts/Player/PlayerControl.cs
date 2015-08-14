@@ -10,9 +10,9 @@ namespace Assets._Scripts.Player
         [SerializeField]
         private float AxisDeadZone;
         [SerializeField]
-        private string HorizontalAxisName; //Set up in Project Settings > Input
+        public string HorizontalAxisName; //Set up in Project Settings > Input
         [SerializeField]
-        private string VerticalAxisName; //Set up in Project Settings > Input
+        public string VerticalAxisName; //Set up in Project Settings > Input
         [SerializeField]
         private KeyCode FireButton;
         [SerializeField]
@@ -47,11 +47,17 @@ namespace Assets._Scripts.Player
 				rgbd2D.velocity = new Vector2 (rgbd2D.velocity.x, 0);
 			}
 
-			//No need for this since there will be auto fire ~ Jonathan
-            /*if (Input.GetKeyDown(FireButton))
-            {
-                gameObject.GetComponent<PlayerBase>().PlayerWeaponsComponent.ShootBaseWeapon();
-            }*/
+			if (Input.GetKeyDown (SuperWeaponButton) && (gameObject.GetComponent<PlayerBase> ().PlayerWeaponsComponent.SuperWeapon1 != null)) {
+
+				if(HorizontalAxisName == "Horizontal2"){ //Player 1
+
+					gameObject.GetComponent<PlayerBase>().PlayerWeaponsComponent.ShootSuperWeapon1(true);
+				}else{
+
+					gameObject.GetComponent<PlayerBase>().PlayerWeaponsComponent.ShootSuperWeapon1(false);
+				}
+				gameObject.GetComponent<PlayerBase> ().PlayerWeaponsComponent.SuperWeapon1 = null;
+			}
         }
     }
 }
