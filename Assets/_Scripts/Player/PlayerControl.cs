@@ -4,6 +4,8 @@ namespace Assets._Scripts.Player
 {
     public class PlayerControl : MonoBehaviour
     {
+		public GameObject finishMarker;
+
         [Header("Control Info")]
         [SerializeField]
         private float AxisDeadZone;
