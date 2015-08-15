@@ -2,6 +2,8 @@
 
 namespace Assets._Scripts.Weapons
 {
+    public enum WeaponType { Basic, ControlSwap, EnemyDisplacement, SlowMotion, WeaponDisable, VisualHindrance }
+
 	public class Weapon : MonoBehaviour
 	{
 		
@@ -9,6 +11,7 @@ namespace Assets._Scripts.Weapons
 		public int Damage;
 		public float Speed;
 		public float FireRate;
+        public WeaponType type;
 		
 		[Header("Projectyles to Shoot")]
 		public Projectile WeaponProjectile;
