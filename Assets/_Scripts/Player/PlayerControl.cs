@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-//using Assets._Scripts.Managers;
+using Assets._Scripts.Managers;
 
 namespace Assets._Scripts.Player
 {
@@ -63,7 +63,19 @@ namespace Assets._Scripts.Player
 				gameObject.GetComponent<PlayerBase> ().PlayerWeaponsComponent.SuperWeapon1 = null;
 			}*/
 		}
-		
-		//Put the whole two player control thing here, I kinda forget it though, WILL FINISH LATER! ~ Jonathan
+
+        public void SetUpControlsAsPlayer1()
+        {
+            HorizontalAxisName = ControlsManager.instance.Player1Controls.HorizontalAxis;
+            VerticalAxisName = ControlsManager.instance.Player1Controls.VerticalAxis;
+            SuperWeaponButton = ControlsManager.instance.Player1Controls.MegaWeaponFireButton;
+        }
+
+        public void SetUpControlsAsPlayer2()
+        {
+            HorizontalAxisName = ControlsManager.instance.Player2Controls.HorizontalAxis;
+            VerticalAxisName = ControlsManager.instance.Player2Controls.VerticalAxis;
+            SuperWeaponButton = ControlsManager.instance.Player2Controls.MegaWeaponFireButton;
+        }
 	}
 }

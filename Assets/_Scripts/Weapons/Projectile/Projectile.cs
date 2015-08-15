@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 //using Assets._Scripts.AI;
-//using Assets._Scripts.Managers;
+using Assets._Scripts.Managers;
 
 namespace Assets._Scripts.Weapons
 {
@@ -22,6 +22,8 @@ namespace Assets._Scripts.Weapons
 			
 			//ProjectileAnimator.ShowSpawnAnimaton;
 			StartCoroutine ("DieAfterTimeCoroutine");
+
+            gameObject.transform.parent = MapManager.instance.ParticlesTransform; 
 		}
 		
 		protected virtual void Move()
@@ -39,8 +41,6 @@ namespace Assets._Scripts.Weapons
 		void Update()
 		{
 			Move();
-			//No managers yet! ~ Jonathan
-			//gameObject.transform.parent = ObjectManager.instance.ContainerTransform;
 		}
 		
 		private IEnumerator DieAfterTimeCoroutine()

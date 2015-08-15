@@ -14,8 +14,6 @@ namespace Assets._Scripts.Managers
         private Transform Player1SpawningPoint;
         [SerializeField]
         private Transform Player2SpawningPoint;
-        [SerializeField]
-        private Transform PlayersContainer;
 
         private VehicleType Player1ShipType;
         private VehicleType Player2ShipType;
@@ -38,15 +36,15 @@ namespace Assets._Scripts.Managers
         {
             Player1Ship = (Instantiate(GetVehicle(Player1ShipType).gameObject, Player1SpawningPoint.position, Player1SpawningPoint.rotation) as GameObject).GetComponent<PlayerBase>();
             Player2Ship = (Instantiate(GetVehicle(Player2ShipType).gameObject, Player2SpawningPoint.position, Player2SpawningPoint.rotation) as GameObject).GetComponent<PlayerBase>();
-            //Player1Ship.PlayerControlComponent.SetUpPlayer1Controls();
-            //Player2Ship.PlayerControlComponent.SetUpPlayer2Controls();
-            //Player1Ship.mPlayerNumber = 1;
-            //Player2Ship.mPlayerNumber = 2;
 
-            //if (PlayersContainer == null) return;
+            Player1Ship.PlayerControlComponent.SetUpControlsAsPlayer1();
+            Player2Ship.PlayerControlComponent.SetUpControlsAsPlayer2();
 
-            //Player1Ship.gameObject.transform.parent = PlayersContainer;
-            //Player2Ship.gameObject.transform.parent = PlayersContainer;
+            Player1Ship.mPlayerNumber = 1;
+            Player2Ship.mPlayerNumber = 2;
+
+            Player1Ship.gameObject.transform.parent = MapManager.instance.PlayersTransform;
+            Player2Ship.gameObject.transform.parent = MapManager.instance.PlayersTransform;
 			//FindObjectOfType<ScoreKeeper>().enabled = true;
         }
     }
