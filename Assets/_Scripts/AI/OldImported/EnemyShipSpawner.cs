@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets._Scripts.Player;
+using Assets._Scripts.Managers;
 
 namespace Assets._Scripts.AI
 {
@@ -108,37 +109,25 @@ namespace Assets._Scripts.AI
 					switch (mTargetPlayerNumber)
 					{
 					case 1:
-						if(mStartKillNumber <= mScoreKeeper.mP1RoundKills)
-						{
-							VehiclesManager.instance.Player1Ship.PlayerWeaponsComponent.canShoot = false;
-						}
+						VehiclesManager.instance.Player1Ship.PlayerWeaponsComponent.canShoot = false;
 						break;
 					case 2:
-						if(mStartKillNumber <= mScoreKeeper.mP2RoundKills)
-						{
-							VehiclesManager.instance.Player2Ship.PlayerWeaponsComponent.canShoot = false;
-						}
+						VehiclesManager.instance.Player2Ship.PlayerWeaponsComponent.canShoot = false;
 						break;
 					default:
 						break;
 					}
 				}
 			}
-			else
+			if(!mSpawning && mWaveStartTime<=0f)
 			{
 				switch (mTargetPlayerNumber)
 				{
 				case 1:
-					if(mStartKillNumber <= mScoreKeeper.mP1RoundKills)
-					{
-						VehiclesManager.instance.Player1Ship.PlayerWeaponsComponent.canShoot = true;
-					}
+					VehiclesManager.instance.Player1Ship.PlayerWeaponsComponent.canShoot = true;
 					break;
 				case 2:
-					if(mStartKillNumber <= mScoreKeeper.mP2RoundKills)
-					{
-						VehiclesManager.instance.Player2Ship.PlayerWeaponsComponent.canShoot = true;
-					}
+					VehiclesManager.instance.Player2Ship.PlayerWeaponsComponent.canShoot = true;
 					break;
 				default:
 					break;
@@ -200,6 +189,7 @@ namespace Assets._Scripts.AI
 				if (mSpawnCounter >= mMaxEnemySpawn)
 				{
 					mSpawning = false;
+					Destroy (this.gameObject);
 				}
 			}
 		}
