@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets._Scripts.Player;
+using Assets._Scripts.Managers;
 
 namespace Assets._Scripts.AI
 {
@@ -23,7 +24,7 @@ namespace Assets._Scripts.AI
 
 		public void Start()
 		{
-			mScoreKeeper = FindObjectOfType<ScoreKeeper>();
+			mScoreKeeper = ScoreKeeper.instance;
 
 			//Vector2 bulletForce;
 
