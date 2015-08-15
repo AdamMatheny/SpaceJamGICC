@@ -65,7 +65,7 @@ namespace Assets._Scripts.AI
 		void Start () 
 		{
 			mSpawnInterval = mDefaultSpawnInterval;
-			mScoreKeeper = ScoreKeeper.instance;
+			mScoreKeeper = FindObjectOfType<ScoreKeeper>();
 
 
 		

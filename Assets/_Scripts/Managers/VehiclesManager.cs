@@ -45,8 +45,7 @@ namespace Assets._Scripts.Managers
 
             Player1Ship.gameObject.transform.parent = MapManager.instance.PlayersTransform;
             Player2Ship.gameObject.transform.parent = MapManager.instance.PlayersTransform;
-
-            CollectablesManager.instance.StartSpawning();
+			//FindObjectOfType<ScoreKeeper>().enabled = true;
         }
     }
 }

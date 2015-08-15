@@ -296,7 +296,7 @@ namespace Assets._Scripts.UI
 
 			if(FindObjectOfType<ScoreKeeper>() != null)
 			{
-				ScoreKeeper.instance.enabled = true;
+				FindObjectOfType<ScoreKeeper>().enabled = true;
 			}
         }
     }
