@@ -143,7 +143,7 @@ namespace Assets._Scripts.AI
 				}
 
 				//Override Shooting frequency
-				NewEnemy.GetComponent<EnemyFiring>().mShootTimerDefault = mShootingFrequencyOverrideTimeAmount;
+				NewEnemy.GetComponent<EnemyFiring>().mBulletTimerDefault = mShootingFrequencyOverrideTimeAmount;
 
 
 

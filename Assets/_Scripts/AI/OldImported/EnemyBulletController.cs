@@ -56,15 +56,10 @@ namespace Assets._Scripts.AI
 			//Just fire up and down ~Adam
 			else
 			{
-				//Fire up/down
-				if (mPlayer.transform.position.y > transform.position.y)
-				{
-					bulletForce = new Vector2(0.0f,mBulletSpeed);
-				}
-				else
-				{
+				//Fire straight down
+
 					bulletForce = new Vector2(0.0f,mBulletSpeed * -1.0f);
-				}
+
 			}
 
 		
