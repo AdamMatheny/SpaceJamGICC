@@ -42,13 +42,7 @@ namespace Assets._Scripts.Player
 		
 		public void Update(){
 
-			foreach (GameObject spawner in enemySpawners) {
 
-				if(!spawner.GetComponent<EnemyShipSpawner> ().mSpawning){
-
-					canShoot = true;
-				}
-			}
 
 			if (canShoot) {
 			

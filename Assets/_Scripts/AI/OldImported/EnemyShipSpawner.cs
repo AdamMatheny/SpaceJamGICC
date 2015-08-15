@@ -11,7 +11,7 @@ namespace Assets._Scripts.AI
 		public int mTargetPlayerNumber = 1;
 		public ScoreKeeper mScoreKeeper;
 
-		[SerializeField] private bool mUseSwarm;
+		public bool mUseSwarm;
 		[SerializeField] private bool mRushPlayer;
 
 
@@ -103,6 +103,46 @@ namespace Assets._Scripts.AI
 				if(mSwarmSpecial != null)
 				{
 					mSwarmSpecial.enabled = true;
+				}
+				if(mUseSwarm)
+				{
+					switch (mTargetPlayerNumber)
+					{
+					case 1:
+						if(mStartKillNumber <= mScoreKeeper.mP1RoundKills)
+						{
+							VehiclesManager.instance.Player1Ship.PlayerWeaponsComponent.canShoot = false;
+						}
+						break;
+					case 2:
+						if(mStartKillNumber <= mScoreKeeper.mP2RoundKills)
+						{
+							VehiclesManager.instance.Player2Ship.PlayerWeaponsComponent.canShoot = false;
+						}
+						break;
+					default:
+						break;
+					}
+				}
+			}
+			else
+			{
+				switch (mTargetPlayerNumber)
+				{
+				case 1:
+					if(mStartKillNumber <= mScoreKeeper.mP1RoundKills)
+					{
+						VehiclesManager.instance.Player1Ship.PlayerWeaponsComponent.canShoot = true;
+					}
+					break;
+				case 2:
+					if(mStartKillNumber <= mScoreKeeper.mP2RoundKills)
+					{
+						VehiclesManager.instance.Player2Ship.PlayerWeaponsComponent.canShoot = true;
+					}
+					break;
+				default:
+					break;
 				}
 			}
 		}//END of Update()
