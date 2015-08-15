@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets._Scripts.Player;
 
 namespace Assets._Scripts.AI
 {
@@ -56,12 +57,15 @@ namespace Assets._Scripts.AI
 			if(mUsesSwarm)
 			{
 				mSpeed = mFormSpeed;
+				mSwarmGridPosition = mSwarmGrid.GetGridPosition();
 
 			}
 			else
 			{
 				mSpeed = mDefaultSpeed;
 			}
+			mUsesLoop = !mHasLooped;
+			mOriginPoint = transform.position;
 		}
 		
 		// Update is called once per frame
@@ -178,6 +182,7 @@ namespace Assets._Scripts.AI
 			if(mSwitchCoolDown <= 0f)
 			{
 				mCurrentAIState = AIState.ApproachingSwarm;
+				mDistToTarget = Vector3.Distance (transform.position, mFinalDestPoint);
 			}
 
 		}
@@ -189,9 +194,6 @@ namespace Assets._Scripts.AI
 			{
 				mSpeed = mDefaultSpeed;
 			}
-
-			transform.position = mSwarmGridPosition.transform.position;
-			transform.rotation = mSwarmGridPosition.transform.rotation;
 
 			transform.position = mSwarmGridPosition.transform.position;
 			transform.up = mSwarmGridPosition.transform.up;

@@ -275,6 +275,11 @@ namespace Assets._Scripts.UI
 
             Player1Locked = false;
             Player2Locked = false;
+
+			if(FindObjectOfType<ScoreKeeper>() != null)
+			{
+				FindObjectOfType<ScoreKeeper>().enabled = true;
+			}
         }
     }
 }

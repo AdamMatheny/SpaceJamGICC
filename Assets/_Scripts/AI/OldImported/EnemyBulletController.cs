@@ -23,7 +23,6 @@ namespace Assets._Scripts.AI
 
 		public void Start()
 		{
-			mPlayer = FindObjectOfType<PlayerBase>().gameObject;
 			mScoreKeeper = FindObjectOfType<ScoreKeeper>();
 
 			//Vector2 bulletForce;
@@ -69,7 +68,7 @@ namespace Assets._Scripts.AI
 			}
 
 		
-			GetComponent<Rigidbody> ().velocity = bulletForce;
+			GetComponent<Rigidbody2D> ().velocity = bulletForce;
 
 
 
@@ -90,7 +89,7 @@ namespace Assets._Scripts.AI
 				transform.LookAt (mPlayer.transform.position);
 				transform.rotation = Quaternion.Euler (new Vector3 (90f, 0f, 0f) + transform.rotation.eulerAngles);
 
-				GetComponent<Rigidbody> ().velocity = bulletForce;
+				GetComponent<Rigidbody2D> ().velocity = bulletForce;
 
 			}
 

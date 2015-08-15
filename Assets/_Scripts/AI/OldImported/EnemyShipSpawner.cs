@@ -7,6 +7,11 @@ namespace Assets._Scripts.AI
 	{
 
 		public int mTargetPlayerNumber = 1;
+		public ScoreKeeper mScoreKeeper;
+
+		
+		[SerializeField] private bool mUseSwarm;
+		[SerializeField] private bool mRushPlayer;
 
 
 		//The SwarmGrid this spawner is sending enemies to
@@ -15,6 +20,7 @@ namespace Assets._Scripts.AI
 		[SerializeField] private bool mUsingLoopPoint = false;
 		//The point that the spawned enemies will loop around if the above is true
 		[SerializeField] private GameObject mLoopPoint;
+		[SerializeField] private GameObject mFinalRushPoint;
 
 
 		//*****Values for overriding spawned enemy properties******
@@ -44,27 +50,58 @@ namespace Assets._Scripts.AI
 		private float mSpawnInterval;
 		//How long to wait before enemies are first spawned
 		public float mWaveStartTime = 2f;
+		public int mStartKillNumber = 0;
 		//Which type of enemy to spawn
 		public GameObject mEnemyToSpawn;
 		//How many enemies to spawn per wave
 		[SerializeField] private int mMaxEnemySpawn = 5;
 		//How many enemies we've spawned so far
 		[HideInInspector] public int mSpawnCounter = 0;
-		
+
+
+		public SwarmSpecialBehavior mSwarmSpecial;
 		// Use this for initialization
 		void Start () 
 		{
 			mSpawnInterval = mDefaultSpawnInterval;
+			mScoreKeeper = FindObjectOfType<ScoreKeeper>();
+
+
+		
+
 		}//END of Start()
 		
 		// Update is called once per frame
 		void Update () 
 		{
-			mWaveStartTime -= Time.deltaTime;
-			
+
+			//Start counting down to spawn if enough enemies have been killed Adam
+			switch (mTargetPlayerNumber)
+			{
+			case 1:
+				if(mStartKillNumber <= mScoreKeeper.mP1RoundKills)
+				{
+					mWaveStartTime -= Time.deltaTime;
+				}
+				break;
+			case 2:
+				if(mStartKillNumber <= mScoreKeeper.mP2RoundKills)
+				{
+					mWaveStartTime -= Time.deltaTime;
+				}
+				break;
+			default:
+				mWaveStartTime -= Time.deltaTime;
+				break;
+			}
+
 			if (mWaveStartTime <= 0.0f && mSpawning)
 			{
 				SpawnEnemies();
+				if(mSwarmSpecial != null)
+				{
+					mSwarmSpecial.enabled = true;
+				}
 			}
 		}//END of Update()
 
@@ -77,7 +114,9 @@ namespace Assets._Scripts.AI
 				GameObject NewEnemy = Instantiate(mEnemyToSpawn, transform.position, Quaternion.identity) as GameObject;
 				NewEnemy.GetComponent<Enemy>().mTargetPlayerNumber = mTargetPlayerNumber;
 				NewEnemy.GetComponent<EnemyMovement>().mSwarmGrid = mTargetSwarmGrid;
-				
+				NewEnemy.GetComponent<EnemyMovement>().mUsesSwarm = mUseSwarm;
+				NewEnemy.GetComponent<EnemyMovement>().mRushPlayer = mRushPlayer;
+
 
 
 				//Override flight speeds ~Adam
@@ -98,6 +137,10 @@ namespace Assets._Scripts.AI
 
 				NewEnemy.GetComponent<EnemyMovement>().mLoopTime = mLoopOverrideTimeAmount;
 
+				if(mFinalRushPoint != null)
+				{
+					NewEnemy.GetComponent<EnemyMovement>().mFinalDestPoint = mFinalRushPoint.transform.position;
+				}
 
 				//Override Shooting frequency
 				NewEnemy.GetComponent<EnemyFiring>().mShootTimerDefault = mShootingFrequencyOverrideTimeAmount;
@@ -105,7 +148,7 @@ namespace Assets._Scripts.AI
 
 
 				//Delete the enemy if it couldn't find a spot in the swarm
-				if (NewEnemy.GetComponent<EnemyMovement>().mSwarmGrid == null)
+				if (NewEnemy.GetComponent<EnemyMovement>().mSwarmGrid == null && mUseSwarm)
 				{
 					Destroy(NewEnemy.gameObject);
 				}
