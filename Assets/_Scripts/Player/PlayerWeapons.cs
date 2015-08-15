@@ -17,8 +17,8 @@ namespace Assets._Scripts.Player
 		public void ShootBaseWeapon()
 		{
 			BaseWeapon.Shoot(null); 
-			//No audio yet ~ Jonathan
-			//AudioManager.instance.PlayRedShipSound(ShipRedSoundType.ShootBasic);
+
+			AudioManager.instance.PlayRedShipSound(ShipRedSoundType.ShootBasic);
 		}
 		
 		public void ShootSuperWeapon1(GameObject playerToAffect)
