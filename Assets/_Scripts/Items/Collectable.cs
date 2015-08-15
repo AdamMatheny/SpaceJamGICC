@@ -2,10 +2,19 @@
 using Assets._Scripts.Weapons;
 using Assets._Scripts.Managers;
 using System;
-using System.Collections;
 
 namespace Assets._Scripts.Items
 {
+    [Serializable]
+    public class CollectablePobabilty
+    {
+        public AnimationCurve Minus2RoundPosibility;
+        public AnimationCurve Minus1RoundPosibility;
+        public AnimationCurve EvenRoundPosibility;
+        public AnimationCurve Plus1RoundPosibility;
+        public AnimationCurve Plus2RoundPosibility;
+    }
+
     public class Collectable : MonoBehaviour
     {
         [Header("Collectable Info")]
@@ -16,13 +25,11 @@ namespace Assets._Scripts.Items
         public float movementSpeed;
 
         [Header("Collectable Probability")]
-        public AnimationCurve CollectableProbability;
+        public CollectablePobabilty CollectableProbability;
         
         public void Init(int TargetPlayerIndex)
         {
             playerIndex = TargetPlayerIndex;
-            StartCoroutine("DestroySelfCoroutine");
-            gameObject.transform.parent = MapManager.instance.CollectablesTransform;
         }
 
         void Update()
@@ -59,19 +66,6 @@ namespace Assets._Scripts.Items
                     break;
             }
             
-        }
-
-        public float GetCurrentProbablitty(float adventage)
-        {
-            if (adventage < -1) adventage = -1;
-            if (adventage > 1) adventage = 1;
-            return CollectableProbability.Evaluate(adventage) * 100;
-        }
-
-        private IEnumerable DestroySelfCoroutine()
-        {
-            yield return new WaitForSeconds(10.0f);
-            Destroy(gameObject);
         }
     }
 }
