@@ -33,14 +33,14 @@ namespace Assets._Scripts.Player
 		
 		public void Start(){
 
-			enemySpawners = GameObject.FindGameObjectsWithTag ("Spawner");
-
 			fireRate = BaseWeapon.FireRate / 10;
 			
 			tempFireRate = fireRate;
 		}
 		
 		public void Update(){
+
+			enemySpawners = GameObject.FindGameObjectsWithTag ("Spawner");
 
 			foreach (GameObject spawner in enemySpawners) {
 

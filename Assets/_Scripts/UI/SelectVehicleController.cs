@@ -44,7 +44,7 @@ namespace Assets._Scripts.UI
         private void MovePlayer1SelectRight()
         {
             if (Player1Locked) return;
-            if (CurrectPlayer1Ship == 5) return;
+            if (CurrectPlayer1Ship == 4) return;
             CurrectPlayer1Ship++;
 
             switch (CurrectPlayer1Ship)
@@ -67,15 +67,10 @@ namespace Assets._Scripts.UI
                     Player1SelectImages[0].sprite = VehiclesManager.instance.GetVehicle(VehicleType.BlueShip).PlayerVisualsComponent.DefaultSprite;
                     Player1SelectImages[1].sprite = VehiclesManager.instance.GetVehicle(VehicleType.PinkShip).PlayerVisualsComponent.DefaultSprite;
                     Player1SelectImages[2].sprite = VehiclesManager.instance.GetVehicle(VehicleType.WhiteShip).PlayerVisualsComponent.DefaultSprite;
-                    Player1SelectImages[3].sprite = VehiclesManager.instance.GetVehicle(VehicleType.GreenShip).PlayerVisualsComponent.DefaultSprite;
+                    Player1SelectImages[3].sprite = ShipNoneSprite;
                     Player1SelectImages[4].sprite = ShipNoneSprite;
                     break;
                 case 5:
-                    Player1SelectImages[0].sprite = VehiclesManager.instance.GetVehicle(VehicleType.PinkShip).PlayerVisualsComponent.DefaultSprite;
-                    Player1SelectImages[1].sprite = VehiclesManager.instance.GetVehicle(VehicleType.WhiteShip).PlayerVisualsComponent.DefaultSprite;
-                    Player1SelectImages[2].sprite = VehiclesManager.instance.GetVehicle(VehicleType.GreenShip).PlayerVisualsComponent.DefaultSprite;
-                    Player1SelectImages[3].sprite = ShipNoneSprite;
-                    Player1SelectImages[4].sprite = ShipNoneSprite;
                     break;
             }
         }
@@ -107,14 +102,11 @@ namespace Assets._Scripts.UI
                     Player1SelectImages[1].sprite = VehiclesManager.instance.GetVehicle(VehicleType.BlueShip).PlayerVisualsComponent.DefaultSprite;
                     Player1SelectImages[2].sprite = VehiclesManager.instance.GetVehicle(VehicleType.PinkShip).PlayerVisualsComponent.DefaultSprite;
                     Player1SelectImages[3].sprite = VehiclesManager.instance.GetVehicle(VehicleType.WhiteShip).PlayerVisualsComponent.DefaultSprite;
-                    Player1SelectImages[4].sprite = VehiclesManager.instance.GetVehicle(VehicleType.GreenShip).PlayerVisualsComponent.DefaultSprite;
+                    Player1SelectImages[4].sprite = ShipNoneSprite;
                     break;
                 case 4:
-                    Player1SelectImages[0].sprite = VehiclesManager.instance.GetVehicle(VehicleType.BlueShip).PlayerVisualsComponent.DefaultSprite;
-                    Player1SelectImages[1].sprite = VehiclesManager.instance.GetVehicle(VehicleType.PinkShip).PlayerVisualsComponent.DefaultSprite;
-                    Player1SelectImages[2].sprite = VehiclesManager.instance.GetVehicle(VehicleType.WhiteShip).PlayerVisualsComponent.DefaultSprite;
-                    Player1SelectImages[3].sprite = VehiclesManager.instance.GetVehicle(VehicleType.GreenShip).PlayerVisualsComponent.DefaultSprite;
-                    Player1SelectImages[4].sprite = ShipNoneSprite;
+                    break;
+                case 5:
                     break;
             }
         }
@@ -122,7 +114,7 @@ namespace Assets._Scripts.UI
         private void MovePlayer2SelectRight()
         {
             if (Player2Locked) return;
-            if (CurrectPlayer2Ship == 5) return;
+            if (CurrectPlayer2Ship == 4) return;
             CurrectPlayer2Ship++;
 
             switch (CurrectPlayer2Ship)
@@ -145,15 +137,10 @@ namespace Assets._Scripts.UI
                     Player2SelectImages[0].sprite = VehiclesManager.instance.GetVehicle(VehicleType.BlueShip).PlayerVisualsComponent.DefaultSprite;
                     Player2SelectImages[1].sprite = VehiclesManager.instance.GetVehicle(VehicleType.PinkShip).PlayerVisualsComponent.DefaultSprite;
                     Player2SelectImages[2].sprite = VehiclesManager.instance.GetVehicle(VehicleType.WhiteShip).PlayerVisualsComponent.DefaultSprite;
-                    Player2SelectImages[3].sprite = VehiclesManager.instance.GetVehicle(VehicleType.GreenShip).PlayerVisualsComponent.DefaultSprite;
+                    Player2SelectImages[3].sprite = ShipNoneSprite;
                     Player2SelectImages[4].sprite = ShipNoneSprite;
                     break;
                 case 5:
-                    Player2SelectImages[0].sprite = VehiclesManager.instance.GetVehicle(VehicleType.PinkShip).PlayerVisualsComponent.DefaultSprite;
-                    Player2SelectImages[1].sprite = VehiclesManager.instance.GetVehicle(VehicleType.WhiteShip).PlayerVisualsComponent.DefaultSprite;
-                    Player2SelectImages[2].sprite = VehiclesManager.instance.GetVehicle(VehicleType.GreenShip).PlayerVisualsComponent.DefaultSprite;
-                    Player2SelectImages[3].sprite = ShipNoneSprite;
-                    Player2SelectImages[4].sprite = ShipNoneSprite;
                     break;
             }
         }
@@ -185,14 +172,11 @@ namespace Assets._Scripts.UI
                     Player2SelectImages[1].sprite = VehiclesManager.instance.GetVehicle(VehicleType.BlueShip).PlayerVisualsComponent.DefaultSprite;
                     Player2SelectImages[2].sprite = VehiclesManager.instance.GetVehicle(VehicleType.PinkShip).PlayerVisualsComponent.DefaultSprite;
                     Player2SelectImages[3].sprite = VehiclesManager.instance.GetVehicle(VehicleType.WhiteShip).PlayerVisualsComponent.DefaultSprite;
-                    Player2SelectImages[4].sprite = VehiclesManager.instance.GetVehicle(VehicleType.GreenShip).PlayerVisualsComponent.DefaultSprite;
+                    Player2SelectImages[4].sprite = ShipNoneSprite;
                     break;
                 case 4:
-                    Player2SelectImages[0].sprite = VehiclesManager.instance.GetVehicle(VehicleType.BlueShip).PlayerVisualsComponent.DefaultSprite;
-                    Player2SelectImages[1].sprite = VehiclesManager.instance.GetVehicle(VehicleType.PinkShip).PlayerVisualsComponent.DefaultSprite;
-                    Player2SelectImages[2].sprite = VehiclesManager.instance.GetVehicle(VehicleType.WhiteShip).PlayerVisualsComponent.DefaultSprite;
-                    Player2SelectImages[3].sprite = VehiclesManager.instance.GetVehicle(VehicleType.GreenShip).PlayerVisualsComponent.DefaultSprite;
-                    Player2SelectImages[4].sprite = ShipNoneSprite;
+                    break;
+                case 5:
                     break;
             }
         }
