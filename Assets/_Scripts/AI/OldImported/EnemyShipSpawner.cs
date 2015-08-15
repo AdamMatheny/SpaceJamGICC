@@ -6,7 +6,7 @@ namespace Assets._Scripts.AI
 	public class EnemyShipSpawner : MonoBehaviour 
 	{
 
-
+		public int mTargetPlayerNumber = 1;
 
 
 		//The SwarmGrid this spawner is sending enemies to
@@ -75,8 +75,9 @@ namespace Assets._Scripts.AI
 			if (mSpawnInterval <= 0.0f)
 			{
 				GameObject NewEnemy = Instantiate(mEnemyToSpawn, transform.position, Quaternion.identity) as GameObject;
+				NewEnemy.GetComponent<Enemy>().mTargetPlayerNumber = mTargetPlayerNumber;
 				NewEnemy.GetComponent<EnemyMovement>().mSwarmGrid = mTargetSwarmGrid;
-
+				
 
 
 				//Override flight speeds ~Adam
