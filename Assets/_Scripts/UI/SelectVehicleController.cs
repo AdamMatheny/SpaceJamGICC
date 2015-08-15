@@ -209,6 +209,8 @@ namespace Assets._Scripts.UI
 
         void Update()
         {
+            if (!targetCanvas.enabled) return;
+
             HandleInput();
         }
 
