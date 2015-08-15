@@ -6,8 +6,8 @@ namespace Assets._Scripts.Player
 	public class PlayerControl : MonoBehaviour
 	{
 		
-		//public GameObject[] players = new GameObject[0]; ~ For checking the other player
-		//public GameObject otherPlayer;
+		public GameObject[] players = new GameObject[0]; // ~ For checking the other player
+		public GameObject otherPlayer;
 		
 		[Header("Control Info")]
 		[SerializeField]
@@ -26,16 +26,16 @@ namespace Assets._Scripts.Player
 		
 		void Start(){
 			
-			//players = GameObject.FindGameObjectsWithTag ("Player"); Might of got this wrong, will check later ~ Jonathan
+			players = GameObject.FindGameObjectsWithTag ("Player"); //Might of got this wrong, will check later ~ Jonathan
 			rgbd2D = GetComponent<Rigidbody2D> (); //Get the RigidBody
 			
-			/*foreach(GameObject player in players){
+			foreach(GameObject player in players){
 				
 				if(player != gameObject){
 					
 					otherPlayer = player;
 				}
-			}*/ //Go through the players and get the one that is not us. Cannot be implemented yet!
+			} //Go through the players and get the one that is not us.
 		}
 		
 		void Update()

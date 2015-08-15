@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Assets._Scripts.Weapons;
-//using Assets._Scripts.Managers;
-//using Assets._Scripts.Audio;
+using Assets._Scripts.Managers;
+using Assets._Scripts.Audio;
 
 namespace Assets._Scripts.Player
 {
@@ -17,8 +17,8 @@ namespace Assets._Scripts.Player
 		public void ShootBaseWeapon()
 		{
 			BaseWeapon.Shoot(null); 
-			//No Managers yet! ~ Jonathan
-			//AudioManager.instance.PlayerRedShipSound(ShipRedSoundType.ShootBasic);
+			//No audio yet ~ Jonathan
+			//AudioManager.instance.PlayRedShipSound(ShipRedSoundType.ShootBasic);
 		}
 		
 		public void ShootSuperWeapon1(GameObject playerToAffect)
