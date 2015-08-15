@@ -2,11 +2,16 @@
 using Assets._Scripts.Weapons;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Audio;
+using Assets._Scripts.AI;
 
 namespace Assets._Scripts.Player
 {
 	public class PlayerWeapons : MonoBehaviour
 	{
+		public GameObject[] enemySpawners = new GameObject[1];
+
+		public bool canShoot;
+
 		public float fireRate;
 		public float tempFireRate;
 		
@@ -27,21 +32,34 @@ namespace Assets._Scripts.Player
 		}
 		
 		public void Start(){
-			
+
+			enemySpawners = GameObject.FindGameObjectsWithTag ("Spawner");
+
 			fireRate = BaseWeapon.FireRate / 10;
 			
 			tempFireRate = fireRate;
 		}
 		
 		public void Update(){
+
+			foreach (GameObject spawner in enemySpawners) {
+
+				if(!spawner.GetComponent<EnemyShipSpawner> ().mSpawning){
+
+					canShoot = true;
+				}
+			}
+
+			if (canShoot) {
 			
-			if (tempFireRate > 0) {
+				if (tempFireRate > 0) {
 				
-				tempFireRate -= Time.deltaTime;
-			} else {
+					tempFireRate -= Time.deltaTime;
+				} else {
 				
-				ShootBaseWeapon();
-				tempFireRate = fireRate;
+					ShootBaseWeapon ();
+					tempFireRate = fireRate;
+				}
 			}
 		}
 	}

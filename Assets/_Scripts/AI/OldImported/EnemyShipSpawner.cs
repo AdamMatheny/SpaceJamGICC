@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets._Scripts.Player;
 
 namespace Assets._Scripts.AI
 {
@@ -9,7 +10,6 @@ namespace Assets._Scripts.AI
 		public int mTargetPlayerNumber = 1;
 		public ScoreKeeper mScoreKeeper;
 
-		
 		[SerializeField] private bool mUseSwarm;
 		[SerializeField] private bool mRushPlayer;
 
@@ -74,6 +74,7 @@ namespace Assets._Scripts.AI
 		// Update is called once per frame
 		void Update () 
 		{
+
 
 			//Start counting down to spawn if enough enemies have been killed Adam
 			switch (mTargetPlayerNumber)

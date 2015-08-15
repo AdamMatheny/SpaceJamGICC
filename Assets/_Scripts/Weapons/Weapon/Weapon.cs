@@ -26,7 +26,7 @@ namespace Assets._Scripts.Weapons
 			UpgradedDurationStart = UpgradedDuration;
 		}
 		
-		public void Update(){
+		public virtual void Update(){
 			
 			if (isUpgraded) {
 				
