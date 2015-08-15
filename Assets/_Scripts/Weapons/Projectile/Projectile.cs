@@ -45,11 +45,8 @@ namespace Assets._Scripts.Weapons
 		
 		private IEnumerator DieAfterTimeCoroutine()
 		{
-			while (true)
-			{
-				yield return new WaitForSeconds(10);
-				Destroy(gameObject);
-			}
+			yield return new WaitForSeconds(10);
+			Destroy(gameObject);
 		}
 	}
 }
