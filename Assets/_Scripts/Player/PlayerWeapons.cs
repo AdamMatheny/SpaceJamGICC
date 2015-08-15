@@ -56,5 +56,11 @@ namespace Assets._Scripts.Player
 				}
 			}
 		}
+
+        public void UnlockSuperWeapon(WeaponType type)
+        {
+            Debug.Log("Unlock Weapon here! " + type);
+            //TODO Unlock Weapon;
+        }
 	}
 }
