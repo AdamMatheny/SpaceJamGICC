@@ -8,6 +8,7 @@ namespace Assets._Scripts.Managers
     {
         public Transform PlayersTransform;
         public Transform ParticlesTransform;
+        public Transform CollectablesTransform;
 
         [SerializeField]
         private List<SpriteRenderer> Player1LevelBackground;
