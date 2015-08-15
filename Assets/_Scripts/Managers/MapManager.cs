@@ -9,11 +9,36 @@ namespace Assets._Scripts.Managers
         public Transform PlayersTransform;
         public Transform ParticlesTransform;
         public Transform CollectablesTransform;
+        public Transform EnemiesTransform;
 
         [SerializeField]
         private List<SpriteRenderer> Player1LevelBackground;
         [SerializeField]
         private List<SpriteRenderer> Player2LevelBackground;
+
+        void Start()
+        {
+            if (PlayersTransform == null)
+            {
+                Debug.LogError("PlayerTransform is not set up in Map Manager!");
+                PlayersTransform = gameObject.transform;
+            }
+            if (ParticlesTransform == null)
+            {
+                Debug.LogError("ParticlesTransform is not set up in Map Manager!");
+                ParticlesTransform = gameObject.transform;
+            }
+            if (CollectablesTransform == null)
+            {
+                Debug.LogError("CollectablesTransform is not set up in Map Manager!");
+                CollectablesTransform = gameObject.transform;
+            }
+            if (EnemiesTransform == null)
+            {
+                Debug.LogError("EnemiesTransform is not set up in Map Manager!");
+                EnemiesTransform = gameObject.transform;
+            }
+        }
 
         public void ShowBackground(int level)
         {
