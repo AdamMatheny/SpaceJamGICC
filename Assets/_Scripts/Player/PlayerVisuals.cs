@@ -2,7 +2,7 @@
 
 namespace Assets._Scripts.Player
 {
-	public enum VehicleType { RedShip, BlueShip, PinkShip, WhiteShip}
+	public enum VehicleType { RedShip, BlueShip, PinkShip, WhiteShip, GreenShip}
 	
 	public class PlayerVisuals : MonoBehaviour
 	{
