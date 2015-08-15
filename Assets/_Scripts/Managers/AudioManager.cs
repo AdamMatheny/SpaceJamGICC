@@ -38,6 +38,8 @@ namespace Assets._Scripts.Managers
                 CurrentMusicVolume = PlayerPrefs.GetFloat("CurrentMusicVolume");
                 SetMusicVolume(CurrentMusicVolume);
             }
+
+            PlayBackgroundMusic(BackgroundMusicType.Menu);
         }
 
         public void PlayRedShipSound(ShipRedSoundType type)
