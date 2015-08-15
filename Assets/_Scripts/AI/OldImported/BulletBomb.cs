@@ -18,7 +18,7 @@ namespace Assets._Scripts.AI
 		
 		}
 
-		void OnTriggerEnter(Collider other)
+		void OnTriggerEnter2D(Collider2D other)
 		{
 			if(other.GetComponent<Enemy>() != null)
 			{

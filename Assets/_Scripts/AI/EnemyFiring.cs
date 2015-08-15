@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets._Scripts.Player;
+using Assets._Scripts.Managers;
 
 namespace Assets._Scripts.AI
 {
@@ -13,11 +14,11 @@ namespace Assets._Scripts.AI
 
 		public bool mRandomFire = false;
 
-		float mBulletTimer = 4f;
+		[SerializeField] private float mBulletTimer = 4f;
 		// Use this for initialization
 		void Start () 
 		{
-			mScoreKeeper = FindObjectOfType<ScoreKeeper>();
+			mScoreKeeper = ScoreKeeper.instance;
 			ScaleBulletTime();
 
 
@@ -30,7 +31,6 @@ namespace Assets._Scripts.AI
 			
 			if(mBulletTimer <= 0f)
 			{
-				
 				FireEnemyBullet();
 				
 				ScaleBulletTime();
