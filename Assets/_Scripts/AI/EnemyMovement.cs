@@ -17,7 +17,7 @@ namespace Assets._Scripts.AI
 
 		public bool mRushPlayer = false;
 		public Vector3 mFinalDestPoint;
-		Vector3 mOriginPoint;
+		public Vector3 mOriginPoint;
 		float mDistToTarget;
 
 

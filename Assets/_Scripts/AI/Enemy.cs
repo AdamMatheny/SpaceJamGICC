@@ -1,12 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets._Scripts.Player;
-using Assets._Scripts.Managers;
 
 namespace Assets._Scripts.AI
 {
 	public class Enemy : MonoBehaviour 
 	{
+		public Transform enemyDisplace1;
+		public Transform enemyDisplace2;
+
+		public GameObject otherTarget;
+
 		public int mTargetPlayerNumber;
 		public GameObject mTargetPlayer;
 		public EnemyMovement mMovementComponent;
@@ -20,17 +24,20 @@ namespace Assets._Scripts.AI
 		// Use this for initialization
 		void Start () 
 		{
-			mScoreKeeper = ScoreKeeper.instance;
+			mScoreKeeper = FindObjectOfType<ScoreKeeper>();
 
 			foreach (PlayerBase potentialTarget in FindObjectsOfType<PlayerBase>())
 			{
-				Debug.Log ("Looking for Player");
+				//Debug.Log ("Looking for Player");
 				if(potentialTarget.mPlayerNumber == mTargetPlayerNumber)
 				{
-					Debug.Log ("Found a player to target!");
+					//Debug.Log ("Found a player to target!");
 					mTargetPlayer= potentialTarget.gameObject;
 					mMovementComponent.mPlayer = potentialTarget.transform;
 					mFiringComponent.mTargetPlayer = potentialTarget.gameObject;
+				}else{
+
+					otherTarget = potentialTarget.gameObject;
 				}
 			}
 		}
@@ -65,8 +72,42 @@ namespace Assets._Scripts.AI
 			//Get Shot)
 			if(other.tag == "PlayerBullet")
 			{
-				Destroy(other.gameObject);
-				EnemyShipDie();
+
+				if(!mTargetPlayer.GetComponent<PlayerControl> ().displace){
+
+					Destroy(other.gameObject);
+					EnemyShipDie();
+				}else{
+
+
+					if(mTargetPlayer.GetComponent<PlayerBase> ().mPlayerNumber == 1){
+
+						Vector3 displacePosition = new Vector3(100, 0, 0);
+
+						transform.position = transform.position + displacePosition;
+						gameObject.GetComponent<EnemyMovement> ().mOriginPoint = gameObject.GetComponent<EnemyMovement> ().mOriginPoint + displacePosition;
+						gameObject.GetComponent<EnemyMovement> ().mFinalDestPoint = gameObject.GetComponent<EnemyMovement> ().mFinalDestPoint + displacePosition;
+					}else{
+
+						Vector3 displacePosition = new Vector3(-100, 0, 0);
+						
+						transform.position = transform.position + displacePosition;
+						gameObject.GetComponent<EnemyMovement> ().mOriginPoint = gameObject.GetComponent<EnemyMovement> ().mOriginPoint + displacePosition;
+						gameObject.GetComponent<EnemyMovement> ().mFinalDestPoint = gameObject.GetComponent<EnemyMovement> ().mFinalDestPoint + displacePosition;
+					}
+
+					Debug.Log("Displaced!");
+					mTargetPlayer = otherTarget;
+					mMovementComponent.mPlayer = otherTarget.transform;
+					mFiringComponent.mTargetPlayer = otherTarget.gameObject;
+
+					GetComponent<EnemyMovement> ().mRushPlayer = true;
+					GetComponent<EnemyMovement> ().mHasLooped = false;
+					GetComponent<EnemyMovement> ().mUsesSwarm = false;
+					GetComponent<EnemyMovement> ().mCurrentAIState = EnemyMovement.AIState.ApproachingSwarm;
+				}
+
+				Destroy(other);
 
 			}
 

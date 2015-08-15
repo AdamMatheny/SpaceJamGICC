@@ -4,16 +4,16 @@ using Assets._Scripts.Player;
 
 namespace Assets._Scripts.Weapons
 {
-	public class SuperInvertControls : Weapon
+	public class SuperWeaponDisable : Weapon
 	{
-
+		
 		public override void Shoot(GameObject playerToAffect){
 			
 			try
 			{
-
-				playerToAffect.gameObject.GetComponent<PlayerControl> ().FlySpeed *= -1;
-				playerToAffect.gameObject.GetComponent<PlayerControl> ().InvertTimer();
+				
+				playerToAffect.gameObject.GetComponent<PlayerWeapons> ().canShoot = false;
+				playerToAffect.gameObject.GetComponent<PlayerControl> ().DisableWeapon();
 			}
 			catch
 			{
