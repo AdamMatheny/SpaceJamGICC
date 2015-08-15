@@ -23,7 +23,9 @@ namespace Assets._Scripts.Player
 		[SerializeField]
 		public float FlySpeed;
 		public Rigidbody2D rgbd2D;
-		
+		public float mSpeedMod = 1.0f;
+		public float mSpeedModTimer = 0f;
+
 		void Start(){
 			
 			players = GameObject.FindGameObjectsWithTag ("Player"); //Might of got this wrong, will check later ~ Jonathan
@@ -40,16 +42,28 @@ namespace Assets._Scripts.Player
 		
 		void Update()
 		{
+			//Fix player's speed after a few seconds if slowed down ~Adam
+			if(mSpeedMod != 1.0f)
+			{
+				mSpeedModTimer -= Time.deltaTime;
+
+				if(mSpeedModTimer <= 0f)
+				{
+					mSpeedMod = 1.0f;
+				}
+			}
+
 			//Move player around, does work with controllers (Kinda) Will get 100% later ~ Jonathan
-			
+
+
 			if (Input.GetAxis (HorizontalAxisName) >= AxisDeadZone || Input.GetAxis (HorizontalAxisName) <= -AxisDeadZone) {
-				rgbd2D.velocity = new Vector2 (Input.GetAxis (HorizontalAxisName) * FlySpeed * Time.deltaTime, rgbd2D.velocity.y);
+				rgbd2D.velocity = new Vector2 (Input.GetAxis (HorizontalAxisName) * FlySpeed * mSpeedMod * Time.deltaTime, rgbd2D.velocity.y);
 			} else {
 				rgbd2D.velocity = new Vector2 (0, rgbd2D.velocity.y);
 			}
 			
 			if (Input.GetAxis (VerticalAxisName) >= AxisDeadZone || Input.GetAxis (VerticalAxisName) <= -AxisDeadZone) {
-				rgbd2D.velocity = new Vector2 (rgbd2D.velocity.x, Input.GetAxis (VerticalAxisName) * FlySpeed * Time.deltaTime);
+				rgbd2D.velocity = new Vector2 (rgbd2D.velocity.x, Input.GetAxis (VerticalAxisName) * FlySpeed * mSpeedMod * Time.deltaTime);
 			} else {
 				rgbd2D.velocity = new Vector2 (rgbd2D.velocity.x, 0);
 			}

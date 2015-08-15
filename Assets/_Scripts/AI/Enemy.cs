@@ -68,6 +68,12 @@ namespace Assets._Scripts.AI
 				EnemyShipDie();
 
 			}
+
+			//Hit Player
+			if(other.GetComponent<PlayerBase>() != null)
+			{
+				other.GetComponent<PlayerBase>().mHitPlayer();
+			}
 		}
 	}
 }

@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using Assets._Scripts.AI;
+using Assets._Scripts.Managers;
 
 public class ScoreKeeper : MonoBehaviour 
 {
@@ -46,6 +47,7 @@ public class ScoreKeeper : MonoBehaviour
 		{
 			Instantiate(mRoundSuperPrefabs[0], Vector3.zero, Quaternion.identity);
 		}
+		MapManager.instance.ShowBackground(mRoundNumber);
 	}
 	
 	// Update is called once per frame
@@ -177,9 +179,11 @@ public class ScoreKeeper : MonoBehaviour
 			}
 			
 			//Instantiate new super-prefabs for spawning things for the new round `Adam
-			if(mRoundSuperPrefabs[mRoundNumber-1] != null)
+			if(mRoundNumber <= mRoundSuperPrefabs.Length && mRoundSuperPrefabs[mRoundNumber-1] != null)
 			{
 				Instantiate(mRoundSuperPrefabs[mRoundNumber-1], Vector3.zero, Quaternion.identity);
+				MapManager.instance.ShowBackground(mRoundNumber);
+
 			}
 			mRoundWinner = 0;
 			

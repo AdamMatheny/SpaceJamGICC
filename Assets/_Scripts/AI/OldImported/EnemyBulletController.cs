@@ -139,6 +139,12 @@ namespace Assets._Scripts.AI
 					Destroy(other.gameObject);
 					Destroy(this.gameObject);
 				}
+
+				//Hit Player
+				if(other.GetComponent<PlayerBase>() != null)
+				{
+					other.GetComponent<PlayerBase>().mHitPlayer();
+				}
 			}
 
 		}//END of OnTriggerEnter()
