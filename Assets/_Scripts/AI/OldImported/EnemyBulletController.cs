@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets._Scripts.Player;
+using Assets._Scripts.Managers;
 
 namespace Assets._Scripts.AI
 {
@@ -23,7 +24,7 @@ namespace Assets._Scripts.AI
 
 		public void Start()
 		{
-			mScoreKeeper = FindObjectOfType<ScoreKeeper>();
+			mScoreKeeper = ScoreKeeper.instance;
 
 			//Vector2 bulletForce;
 
@@ -107,7 +108,7 @@ namespace Assets._Scripts.AI
 			//Detect distance to player and kill the player and destroy self if close enough to "touch" ~Adam
 			if (Vector3.Distance(this.transform.position, mPlayer.transform.position) <= 1.5f)
 			{
-				//Debug.Log("The player was shot");
+				Debug.Log("The player was shot");
 				Destroy(gameObject);
 			}
 
@@ -120,7 +121,7 @@ namespace Assets._Scripts.AI
 			/*if (other.tag == "Enemy" && mMoveTowardsPlayer) 
 				other.GetComponent<EnemyShipAI> ().EnemyShipDie ();*/ //Enemy ship doesn't have OnTrigger
 
-			if(other.tag == "Player Bullet")
+			if(other.tag == "PlayerBullet")
 			{
 				if(mShootable)
 				{

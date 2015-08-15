@@ -6,8 +6,6 @@ namespace Assets._Scripts.Player
 {
 	public class PlayerControl : MonoBehaviour
 	{
-
-		public bool displace;
 		
 		public GameObject[] players = new GameObject[0]; // ~ For checking the other player
 		public GameObject otherPlayer;
@@ -79,50 +77,20 @@ namespace Assets._Scripts.Player
 				gameObject.GetComponent<PlayerBase> ().PlayerWeaponsComponent.SuperWeapon1 = null;
 			}
 		}
-		#region supers
 
 		public void InvertTimer(){
 
 			StartCoroutine ("InvertTimerEnum");
 		}
+
 		private IEnumerator InvertTimerEnum()
 		{
-			yield return new WaitForSeconds(6);
-			FlySpeed *= -1;
+			while (true)
+			{
+				yield return new WaitForSeconds(6);
+				FlySpeed *= -1;
+			}
 		}
-
-		public void SlowMotion(){
-			
-			StartCoroutine ("SlowMotionEnum");
-		}
-		private IEnumerator SlowMotionEnum(){
-			
-			yield return new WaitForSeconds (6);
-			FlySpeed *= 3;
-			gameObject.GetComponent<PlayerWeapons> ().fireRate /= 3;
-		}
-
-		public void DisableWeapon(){
-
-			StartCoroutine ("DisableWeaponEnum");
-		}
-		private IEnumerator DisableWeaponEnum(){
-
-			yield return new WaitForSeconds (6);
-			gameObject.GetComponent<PlayerWeapons> ().canShoot = true;
-		}
-
-		public void EnemyDisplacement(){
-			
-			StartCoroutine ("EnemyDisplacementEnum");
-		}
-		private IEnumerator EnemyDisplacementEnum(){
-			
-			yield return new WaitForSeconds (10);
-			displace = false;
-		}
-
-		#endregion
 
         public void SetUpControlsAsPlayer1()
         {
