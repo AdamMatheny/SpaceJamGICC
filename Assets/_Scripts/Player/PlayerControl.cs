@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using Assets._Scripts.Managers;
 
 namespace Assets._Scripts.Player
@@ -67,15 +68,28 @@ namespace Assets._Scripts.Player
 			} else {
 				rgbd2D.velocity = new Vector2 (rgbd2D.velocity.x, 0);
 			}
-			
-			//Super Weapon firing, can't use until I finish the other scripts
-			/*if (Input.GetKeyDown (SuperWeaponButton) && (gameObject.GetComponent<PlayerBase> ().PlayerWeaponsComponent.SuperWeapon1 != null)) {
+
+			if (Input.GetKeyDown (SuperWeaponButton) && (gameObject.GetComponent<PlayerBase> ().PlayerWeaponsComponent.SuperWeapon1 != null)) {
 
 				//I think I had some horizontal check thing here, screw that though ~ Jonathan
 
 				gameObject.GetComponent<PlayerBase>().PlayerWeaponsComponent.ShootSuperWeapon1(otherPlayer);
 				gameObject.GetComponent<PlayerBase> ().PlayerWeaponsComponent.SuperWeapon1 = null;
-			}*/
+			}
+		}
+
+		public void InvertTimer(){
+
+			StartCoroutine ("InvertTimerEnum");
+		}
+
+		private IEnumerator InvertTimerEnum()
+		{
+			while (true)
+			{
+				yield return new WaitForSeconds(6);
+				FlySpeed *= -1;
+			}
 		}
 
         public void SetUpControlsAsPlayer1()

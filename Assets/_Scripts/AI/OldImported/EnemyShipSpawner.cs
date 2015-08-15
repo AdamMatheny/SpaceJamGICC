@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets._Scripts.Player;
-using Assets._Scripts.Managers;
 
 namespace Assets._Scripts.AI
 {

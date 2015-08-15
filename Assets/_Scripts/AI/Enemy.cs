@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets._Scripts.Player;
-using Assets._Scripts.Managers;
 
 namespace Assets._Scripts.AI
 {
@@ -20,7 +19,7 @@ namespace Assets._Scripts.AI
 		// Use this for initialization
 		void Start () 
 		{
-			mScoreKeeper = ScoreKeeper.instance;
+			mScoreKeeper = FindObjectOfType<ScoreKeeper>();
 
 			foreach (PlayerBase potentialTarget in FindObjectsOfType<PlayerBase>())
 			{
