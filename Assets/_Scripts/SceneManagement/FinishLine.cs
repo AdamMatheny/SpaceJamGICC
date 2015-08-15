@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets._Scripts.Player;
-using Assets._Scripts.Managers;
 
 public class FinishLine : MonoBehaviour 
 {
@@ -24,9 +23,9 @@ public class FinishLine : MonoBehaviour
 	{
 		if(other.GetComponent<PlayerBase>() != null)
 		{
-			if(ScoreKeeper.instance.mRoundWinner == 0)
+			if(FindObjectOfType<ScoreKeeper>().mRoundWinner == 0)
 			{
-				ScoreKeeper.instance.FinishRound (mPlayerNumber);
+				FindObjectOfType<ScoreKeeper>().FinishRound (mPlayerNumber);
 			}
 		}
 		

@@ -11,7 +11,7 @@ namespace Assets._Scripts.AI
 		public int mTargetPlayerNumber = 1;
 		public ScoreKeeper mScoreKeeper;
 
-		[SerializeField] private bool mUseSwarm;
+		public bool mUseSwarm;
 		[SerializeField] private bool mRushPlayer;
 
 
@@ -104,6 +104,34 @@ namespace Assets._Scripts.AI
 				{
 					mSwarmSpecial.enabled = true;
 				}
+				if(mUseSwarm)
+				{
+					switch (mTargetPlayerNumber)
+					{
+					case 1:
+						VehiclesManager.instance.Player1Ship.PlayerWeaponsComponent.canShoot = false;
+						break;
+					case 2:
+						VehiclesManager.instance.Player2Ship.PlayerWeaponsComponent.canShoot = false;
+						break;
+					default:
+						break;
+					}
+				}
+			}
+			if(!mSpawning && mWaveStartTime<=0f)
+			{
+				switch (mTargetPlayerNumber)
+				{
+				case 1:
+					VehiclesManager.instance.Player1Ship.PlayerWeaponsComponent.canShoot = true;
+					break;
+				case 2:
+					VehiclesManager.instance.Player2Ship.PlayerWeaponsComponent.canShoot = true;
+					break;
+				default:
+					break;
+				}
 			}
 		}//END of Update()
 
@@ -161,6 +189,7 @@ namespace Assets._Scripts.AI
 				if (mSpawnCounter >= mMaxEnemySpawn)
 				{
 					mSpawning = false;
+					Destroy (this.gameObject);
 				}
 			}
 		}
