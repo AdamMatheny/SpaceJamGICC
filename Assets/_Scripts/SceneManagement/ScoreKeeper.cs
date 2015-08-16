@@ -38,14 +38,20 @@ public class ScoreKeeper : Singleton<ScoreKeeper>
 	public Text mP1Messages;
 	public Text mP2Messages;
 
-
+	public AudioClip[] mSoundEffects;
+	public AudioSource mAudioSource;
+		//0: Ready Go
+		//1: Winner
+		
 
 	// Use this for initialization
 	void Start () 
 	{
+		mAudioSource = GetComponent<AudioSource>();
 		if(mRoundSuperPrefabs[0] != null)
 		{
 			Instantiate(mRoundSuperPrefabs[0], Vector3.zero, Quaternion.identity);
+			mAudioSource.PlayOneShot (mSoundEffects[0]);
 		}
 		MapManager.instance.ShowBackground(mRoundNumber);
 	}
@@ -160,7 +166,8 @@ public class ScoreKeeper : Singleton<ScoreKeeper>
 			
 			if(mP1Wins >=3 || mP2Wins >= 3)
 			{
-				Application.LoadLevel(1);
+			//	Application.LoadLevel(1);
+
 			}
 			
 			
@@ -199,6 +206,7 @@ public class ScoreKeeper : Singleton<ScoreKeeper>
 			if(mRoundNumber <= mRoundSuperPrefabs.Length && mRoundSuperPrefabs[mRoundNumber-1] != null)
 			{
 				Instantiate(mRoundSuperPrefabs[mRoundNumber-1], Vector3.zero, Quaternion.identity);
+				mAudioSource.PlayOneShot (mSoundEffects[0]);
 				MapManager.instance.ShowBackground(mRoundNumber);
 
 			}
@@ -206,7 +214,7 @@ public class ScoreKeeper : Singleton<ScoreKeeper>
 			
 			if(mP1Wins >=3 || mP2Wins >= 3)
 			{
-				Application.LoadLevel(Application.loadedLevel);
+				Application.LoadLevel(1);
 			}
 		}
 	}

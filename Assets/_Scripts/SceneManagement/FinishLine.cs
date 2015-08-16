@@ -26,8 +26,32 @@ public class FinishLine : MonoBehaviour
 		{
 			if(ScoreKeeper.instance.mRoundWinner == 0)
 			{
+				switch(mPlayerNumber)
+				{
+				case 1:
+					if(ScoreKeeper.instance.mP1Wins == 2)
+					{
+						ScoreKeeper.instance.mAudioSource.PlayOneShot(ScoreKeeper.instance.mSoundEffects[1]);
+					}
+					break;
+
+				case 2:
+					if(ScoreKeeper.instance.mP2Wins == 2)
+					{
+						ScoreKeeper.instance.mAudioSource.PlayOneShot(ScoreKeeper.instance.mSoundEffects[1]);
+					}
+					break;
+
+				default:
+					break;
+
+				}
+
 				ScoreKeeper.instance.FinishRound (mPlayerNumber);
+
+
 			}
+
 		}
 		
 	}
