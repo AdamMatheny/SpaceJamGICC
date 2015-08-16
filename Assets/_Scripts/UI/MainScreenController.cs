@@ -9,9 +9,10 @@ namespace Assets._Scripts.UI
         {
             if (!targetCanvas.enabled) return;
 
-            if (Input.GetKeyDown(ControlsManager.instance.Player1Controls.BasicFireButton) || Input.GetKeyDown(ControlsManager.instance.Player1Controls.BasicFireButton))
+            if (Input.GetKeyDown(ControlsManager.instance.Player1Controls.BasicFireButton) || Input.GetKeyDown(ControlsManager.instance.Player1Controls.BasicFireButtonGamePad))
             {
                 GUIManager.instance.ShowScreen(ScreenType.Intro1);
+                Debug.Log("dupsko!");
             }
         }
     }
