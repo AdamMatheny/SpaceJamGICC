@@ -8,7 +8,9 @@ namespace Assets._Scripts.Managers
         public string HorizontalAxis;
         public string VerticalAxis;
         public KeyCode BasicFireButton;
+        public KeyCode BasicFireButtonGamePad;
         public KeyCode MegaWeaponFireButton;
+        public KeyCode MegaWeaponFireButtonGamePad;
     }
 
     public class ControlsManager : Singleton<ControlsManager>
