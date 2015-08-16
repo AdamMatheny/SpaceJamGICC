@@ -84,6 +84,9 @@ namespace Assets._Scripts.Player
 				//other.GetComponent<PlayerWeapons> ().SuperWeapon1 = SuperScripts[4];
 				SuperWeapon1 = SuperScripts[4];
 				break;
+			case WeaponType.SuperDeflect:
+				SuperWeapon1 = SuperScripts[5];
+				break;
 			default:
 				//other.GetComponent<PlayerWeapons> ().SuperWeapon1 = null;
 				SuperWeapon1 = null;

@@ -11,9 +11,15 @@ namespace Assets._Scripts.Weapons
 			
 			try
 			{
-				
-				playerToAffect.gameObject.GetComponent<PlayerWeapons> ().canShoot = false;
-				playerToAffect.gameObject.GetComponent<PlayerControl> ().DisableWeapon();
+
+				if(!playerToAffect.gameObject.GetComponent<PlayerControl> ().deflect){
+					
+					playerToAffect.gameObject.GetComponent<PlayerWeapons> ().canShoot = false;
+					playerToAffect.gameObject.GetComponent<PlayerControl> ().DisableWeapon();
+				}else{
+					
+					playerToAffect.gameObject.GetComponent<PlayerControl> ().deflect = false;
+				}
 			}
 			catch
 			{

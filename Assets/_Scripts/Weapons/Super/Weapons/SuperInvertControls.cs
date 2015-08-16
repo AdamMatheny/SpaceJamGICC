@@ -11,9 +11,14 @@ namespace Assets._Scripts.Weapons
 			
 			try
 			{
+				if(!playerToAffect.gameObject.GetComponent<PlayerControl> ().deflect){
 
-				playerToAffect.gameObject.GetComponent<PlayerControl> ().FlySpeed *= -1;
-				playerToAffect.gameObject.GetComponent<PlayerControl> ().InvertTimer();
+					playerToAffect.gameObject.GetComponent<PlayerControl> ().FlySpeed *= -1;
+					playerToAffect.gameObject.GetComponent<PlayerControl> ().InvertTimer();
+				}else{
+
+					playerToAffect.gameObject.GetComponent<PlayerControl> ().deflect = false;
+				}
 			}
 			catch
 			{

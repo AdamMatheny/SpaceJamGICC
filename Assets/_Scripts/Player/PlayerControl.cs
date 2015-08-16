@@ -9,6 +9,8 @@ namespace Assets._Scripts.Player
 	{
 
 		public bool displace;
+
+		public bool deflect;
 		
 		public GameObject[] players = new GameObject[0]; // ~ For checking the other player
 		public GameObject otherPlayer;
@@ -128,6 +130,16 @@ namespace Assets._Scripts.Player
 			yield return new WaitForSeconds (6);
 			gameObject.GetComponent<PlayerWeapons> ().canShoot = true;
 		}
+
+		/*public void Deflect(){
+			
+			StartCoroutine ("DeflectEnum");
+		}
+		private IEnumerator DeflectEnum(){
+			
+			yield return new WaitForSeconds (8);
+			deflect = false;
+		}*/
 
 		public void EnemyDisplacement(){
 			

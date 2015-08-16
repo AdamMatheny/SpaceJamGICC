@@ -11,10 +11,16 @@ namespace Assets._Scripts.Weapons
 			
 			try
 			{
-				
-				playerToAffect.gameObject.GetComponent<PlayerControl> ().FlySpeed /= 3;
-				playerToAffect.gameObject.GetComponent<PlayerWeapons> ().fireRate *= 3;
-				playerToAffect.gameObject.GetComponent<PlayerControl> ().SlowMotion();
+
+				if(!playerToAffect.gameObject.GetComponent<PlayerControl> ().deflect){
+					
+					playerToAffect.gameObject.GetComponent<PlayerControl> ().FlySpeed /= 3;
+					playerToAffect.gameObject.GetComponent<PlayerWeapons> ().fireRate *= 3;
+					playerToAffect.gameObject.GetComponent<PlayerControl> ().SlowMotion();
+				}else{
+					
+					playerToAffect.gameObject.GetComponent<PlayerControl> ().deflect = false;
+				}
 			}
 			catch
 			{

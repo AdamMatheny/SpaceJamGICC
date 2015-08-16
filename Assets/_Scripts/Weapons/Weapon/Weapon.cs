@@ -2,7 +2,7 @@
 
 namespace Assets._Scripts.Weapons
 {
-    public enum WeaponType { Basic, ControlSwap, EnemyDisplacement, SlowMotion, WeaponDisable, VisualHindrance }
+    public enum WeaponType { Basic, ControlSwap, EnemyDisplacement, SlowMotion, WeaponDisable, VisualHindrance, SuperDeflect }
 
 	public class Weapon : MonoBehaviour
 	{
