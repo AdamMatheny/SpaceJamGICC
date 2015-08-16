@@ -11,6 +11,7 @@ namespace Assets._Scripts.Weapons
 			
 			try
 			{
+
 				playerToAffect.gameObject.GetComponent<PlayerControl> ().FlySpeed *= -1;
 				playerToAffect.gameObject.GetComponent<PlayerControl> ().InvertTimer();
 			}
