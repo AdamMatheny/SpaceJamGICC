@@ -31,8 +31,6 @@ namespace Assets._Scripts.Player
 		public Rigidbody2D rgbd2D;
 		public float mSpeedMod = 1.0f;
 		public float mSpeedModTimer = 0f;
-		public float mFireRateMod = 1.0f;
-		public float mFireRateModTimer = 0f;
 
 		void Start(){
 
@@ -58,17 +56,6 @@ namespace Assets._Scripts.Player
 				if(mSpeedModTimer <= 0f)
 				{
 					mSpeedMod = 1.0f;
-				}
-			}
-
-			if(mFireRateMod != 1.0f)
-			{
-				mFireRateModTimer -= Time.deltaTime;
-				
-				if(mFireRateModTimer <= 0f)
-				{
-					mFireRateMod = 1.0f;
-					GetComponent<PlayerWeapons> ().fireRate = .3f;
 				}
 			}
 

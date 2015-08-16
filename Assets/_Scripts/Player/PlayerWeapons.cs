@@ -44,6 +44,8 @@ namespace Assets._Scripts.Player
 		
 		public void Update(){
 
+
+
 			if (canShoot) {
 			
 				if (tempFireRate > 0) {
