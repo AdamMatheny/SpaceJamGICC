@@ -262,20 +262,20 @@ namespace Assets._Scripts.UI
                 Player2MenuMoved = false;
             }
 
-            if (Input.GetKey(ControlsManager.instance.Player1Controls.BasicFireButton) || Input.GetKey(ControlsManager.instance.Player1Controls.BasicFireButtonGamePad))
+            if (Input.GetKeyDown(ControlsManager.instance.Player1Controls.BasicFireButton) || Input.GetKeyDown(ControlsManager.instance.Player1Controls.BasicFireButtonGamePad))
             {
                 LockPlayer1();
             }
-            if (Input.GetKey(ControlsManager.instance.Player1Controls.MegaWeaponFireButton) || Input.GetKey(ControlsManager.instance.Player1Controls.MegaWeaponFireButtonGamePad))
+            if (Input.GetKeyDown(ControlsManager.instance.Player1Controls.MegaWeaponFireButton) || Input.GetKeyDown(ControlsManager.instance.Player1Controls.MegaWeaponFireButtonGamePad))
             {
                 UnlockPlayer1();
             }
 
-            if (Input.GetKey(ControlsManager.instance.Player2Controls.BasicFireButton) || Input.GetKey(ControlsManager.instance.Player2Controls.BasicFireButtonGamePad))
+            if (Input.GetKeyDown(ControlsManager.instance.Player2Controls.BasicFireButton) || Input.GetKeyDown(ControlsManager.instance.Player2Controls.BasicFireButtonGamePad))
             {
                 LockPlayer2();
             }
-            if (Input.GetKey(ControlsManager.instance.Player2Controls.MegaWeaponFireButton) || Input.GetKey(ControlsManager.instance.Player2Controls.MegaWeaponFireButtonGamePad))
+            if (Input.GetKeyDown(ControlsManager.instance.Player2Controls.MegaWeaponFireButton) || Input.GetKeyDown(ControlsManager.instance.Player2Controls.MegaWeaponFireButtonGamePad))
             {
                 UnlockPlayer2();
             }
