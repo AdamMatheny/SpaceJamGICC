@@ -74,6 +74,23 @@ public class ScoreKeeper : Singleton<ScoreKeeper>
 	}
 
 
+	public float ReturnPlayerAdvantage(int checkedPlayer)
+	{
+		float advantageNumber = 1f;
+		switch (checkedPlayer)
+		{
+		case 1:
+			advantageNumber = (mP1Wins+1f)/(mP2Wins+1f) * (mP1Score+1f)/(mP2Score+1f);
+			break;
+		case 2:
+			advantageNumber = (mP2Wins+1f)/(mP1Wins+1f) * (mP2Score+1f)/(mP1Score+1f);
+			break;
+		default:
+			break;
+		}
+		return (advantageNumber);
+	}
+
 	public void FinishRound(int winnerNumber)
 	{
 		
