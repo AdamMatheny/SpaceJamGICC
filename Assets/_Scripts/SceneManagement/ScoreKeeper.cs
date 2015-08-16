@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using Assets._Scripts.AI;
 using Assets._Scripts.Managers;
+using Assets._Scripts.Audio;
 
 public class ScoreKeeper : Singleton<ScoreKeeper> 
 {
@@ -52,6 +53,7 @@ public class ScoreKeeper : Singleton<ScoreKeeper>
 		{
 			Instantiate(mRoundSuperPrefabs[0], Vector3.zero, Quaternion.identity);
 			mAudioSource.PlayOneShot (mSoundEffects[0]);
+			AudioManager.instance.PlayBackgroundMusic(BackgroundMusicType.Level1);
 		}
 		MapManager.instance.ShowBackground(mRoundNumber);
 	}
@@ -208,6 +210,28 @@ public class ScoreKeeper : Singleton<ScoreKeeper>
 				Instantiate(mRoundSuperPrefabs[mRoundNumber-1], Vector3.zero, Quaternion.identity);
 				mAudioSource.PlayOneShot (mSoundEffects[0]);
 				MapManager.instance.ShowBackground(mRoundNumber);
+
+				switch(mRoundNumber)
+				{
+				case 1:
+					AudioManager.instance.PlayBackgroundMusic(BackgroundMusicType.Level1);
+					break;
+				case 2:
+					AudioManager.instance.PlayBackgroundMusic(BackgroundMusicType.Level2);
+					break;
+				case 3:
+					AudioManager.instance.PlayBackgroundMusic(BackgroundMusicType.Level3);
+					break;
+				case 4:
+					AudioManager.instance.PlayBackgroundMusic(BackgroundMusicType.Level4);
+					break;
+				case 5:
+					AudioManager.instance.PlayBackgroundMusic(BackgroundMusicType.Level5);
+					break;
+				default:
+					AudioManager.instance.PlayBackgroundMusic(BackgroundMusicType.Level1);
+					break;
+				}
 
 			}
 			mRoundWinner = 0;

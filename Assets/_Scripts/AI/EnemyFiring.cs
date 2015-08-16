@@ -51,11 +51,11 @@ namespace Assets._Scripts.AI
 			//Scale firing speed based on who is winning `Adam
 			if(mScoreKeeper != null && GetComponent<Enemy>().mTargetPlayerNumber == 1)
 			{
-				mBulletTimer = mBulletTimerDefault/( (mScoreKeeper.mP1Wins+1f)/(mScoreKeeper.mP2Wins+1f) * (mScoreKeeper.mP1Score+1f)/(mScoreKeeper.mP2Score+1f) );
+				mBulletTimer = mBulletTimerDefault;///( (mScoreKeeper.mP1Wins+1f)/(mScoreKeeper.mP2Wins+1f) * (mScoreKeeper.mP1Score+1f)/(mScoreKeeper.mP2Score+1f) );
 			}
 			else if(mScoreKeeper != null && GetComponent<Enemy>().mTargetPlayerNumber == 2)
 			{
-				mBulletTimer = mBulletTimerDefault/( (mScoreKeeper.mP2Wins+1f)/(mScoreKeeper.mP1Wins+1f) * (mScoreKeeper.mP2Score+1f)/(mScoreKeeper.mP1Score+1f) );
+				mBulletTimer = mBulletTimerDefault;///( (mScoreKeeper.mP2Wins+1f)/(mScoreKeeper.mP1Wins+1f) * (mScoreKeeper.mP2Score+1f)/(mScoreKeeper.mP1Score+1f) );
 			}
 
 			if(mRandomFire)
