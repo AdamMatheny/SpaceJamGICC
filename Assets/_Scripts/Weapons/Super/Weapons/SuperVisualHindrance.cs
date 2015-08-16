@@ -30,6 +30,7 @@ namespace Assets._Scripts.Weapons
 				}
 
 				playerIndex = playerToAffect.GetComponent<PlayerBase> ().mPlayerNumber;
+                
 
 				CameraManager.instance.SetVisualHindranceForPlayer(playerIndex);
 

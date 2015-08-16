@@ -8,10 +8,11 @@ namespace Assets._Scripts.Managers
         public Camera Player1Camera;
         public Camera Player2Camera;
 
-		public void Awake(){
-
-			Application.targetFrameRate = 30;
-		}
+        protected override void Awake()
+        {
+            base.Awake();
+            Application.targetFrameRate = 30;
+        }
 
         public void SetVisualHindranceForPlayer(int playerIndex)
         {
