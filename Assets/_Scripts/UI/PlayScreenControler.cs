@@ -1,5 +1,7 @@
 ﻿using UnityEngine.UI;
 using UnityEngine;
+using Assets._Scripts.Managers;
+using Assets._Scripts.Audio;
 
 namespace Assets._Scripts.UI
 {
@@ -17,6 +19,12 @@ namespace Assets._Scripts.UI
 
         [SerializeField]
         private Sprite NoWeaponSprite;
+
+        public override void Show()
+        {
+            base.Show();
+            AudioManager.instance.PlayMenuSound(MenuSoundType.SetReady);
+        }
 
         public void SetUpWeaponImageForPlayer(int playerIndex, Sprite weaponsSprite)
         {
