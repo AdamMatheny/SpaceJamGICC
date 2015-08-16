@@ -44,7 +44,7 @@ namespace Assets._Scripts.Items
             switch (playerIndex)
             {
                 case 1:
-                    if (Vector3.Distance(gameObject.transform.position, VehiclesManager.instance.Player1Ship.gameObject.transform.position) < 1.5f)
+                    if (Vector3.Distance(gameObject.transform.position, VehiclesManager.instance.Player1Ship.gameObject.transform.position) < 3.5f)
                     {
                         VehiclesManager.instance.Player1Ship.PlayerWeaponsComponent.UnlockSuperWeapon(CollectableType);
                         GUIManager.instance.GetGUIScreen(ScreenType.PlayScreen).GetComponent<PlayScreenControler>().SetUpWeaponImageForPlayer(1, CollectableSprite);
@@ -52,7 +52,7 @@ namespace Assets._Scripts.Items
                     }
                     break;
                 case 2:
-                    if (Vector3.Distance(gameObject.transform.position, VehiclesManager.instance.Player2Ship.gameObject.transform.position) < 1.5f)
+                    if (Vector3.Distance(gameObject.transform.position, VehiclesManager.instance.Player2Ship.gameObject.transform.position) < 3.5f)
                     {
                         VehiclesManager.instance.Player2Ship.PlayerWeaponsComponent.UnlockSuperWeapon(CollectableType);
                         GUIManager.instance.GetGUIScreen(ScreenType.PlayScreen).GetComponent<PlayScreenControler>().SetUpWeaponImageForPlayer(2, CollectableSprite);
