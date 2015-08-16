@@ -110,7 +110,7 @@ namespace Assets._Scripts.AI
 			//Detect distance to player and kill the player and destroy self if close enough to "touch" ~Adam
 			if (Vector3.Distance(this.transform.position, mPlayer.transform.position) <= 1.5f)
 			{
-				//Debug.Log("The player was shot");
+				mPlayer.GetComponent<PlayerBase> ().mHitPlayer();
 				Destroy(gameObject);
 			}
 
@@ -122,6 +122,11 @@ namespace Assets._Scripts.AI
 
 			/*if (other.tag == "Enemy" && mMoveTowardsPlayer) 
 				other.GetComponent<EnemyShipAI> ().EnemyShipDie ();*/ //Enemy ship doesn't have OnTrigger
+
+			if (other.tag == "Player") {
+
+				other.GetComponent<PlayerBase> ().mHitPlayer();
+			}
 
 			if(other.tag == "PlayerBullet")
 			{
@@ -139,10 +144,10 @@ namespace Assets._Scripts.AI
 				}
 
 				//Hit Player
-				if(other.GetComponent<PlayerBase>() != null)
-				{
-					other.GetComponent<PlayerBase>().mHitPlayer();
-				}
+				//if(other.GetComponent<PlayerBase>() != null)
+				//{
+				//	other.GetComponent<PlayerBase>().mHitPlayer();
+				//}
 			}
 
 			if(other.GetComponent<BulletBomb>() != null)

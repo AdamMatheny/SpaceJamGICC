@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 namespace Assets._Scripts.Player
 {
@@ -12,11 +13,15 @@ namespace Assets._Scripts.Player
 		
 		public int mPlayerNumber;
 
-
+		public GameObject mPlayerDeathEffect;
 
 		public void mHitPlayer()
 		{
 			//Slow down the player for 3 seconds `Adam
+
+			mPlayerDeathEffect.SetActive (true);
+
+			StartCoroutine ("DamageParticle");
 
 			int rand = Random.Range (1, 4);
 
@@ -43,5 +48,11 @@ namespace Assets._Scripts.Player
 
 			//Once we get multiple weapon levels in, have a chance to reduce weapon level for 6 seconds instead `Adam
 		}
+
+		private IEnumerator DamageParticle()
+		{
+			yield return new WaitForSeconds(3);
+			mPlayerDeathEffect.SetActive (false);
+		} 
 	}
 }
