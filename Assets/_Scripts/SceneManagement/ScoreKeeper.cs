@@ -160,7 +160,7 @@ public class ScoreKeeper : Singleton<ScoreKeeper>
 			
 			if(mP1Wins >=3 || mP2Wins >= 3)
 			{
-				Application.LoadLevel(Application.loadedLevel);
+				Application.LoadLevel(1);
 			}
 			
 			
