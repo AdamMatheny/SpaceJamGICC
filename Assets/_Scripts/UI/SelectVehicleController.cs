@@ -262,20 +262,20 @@ namespace Assets._Scripts.UI
                 Player2MenuMoved = false;
             }
 
-            if (Input.GetKey(ControlsManager.instance.Player1Controls.BasicFireButton))
+            if (Input.GetKey(ControlsManager.instance.Player1Controls.BasicFireButton) || Input.GetKey(ControlsManager.instance.Player1Controls.BasicFireButtonGamePad))
             {
                 LockPlayer1();
             }
-            if (Input.GetKey(ControlsManager.instance.Player1Controls.MegaWeaponFireButton))
+            if (Input.GetKey(ControlsManager.instance.Player1Controls.MegaWeaponFireButton) || Input.GetKey(ControlsManager.instance.Player1Controls.MegaWeaponFireButtonGamePad))
             {
                 UnlockPlayer1();
             }
 
-            if (Input.GetKey(ControlsManager.instance.Player2Controls.BasicFireButton))
+            if (Input.GetKey(ControlsManager.instance.Player2Controls.BasicFireButton) || Input.GetKey(ControlsManager.instance.Player2Controls.BasicFireButtonGamePad))
             {
                 LockPlayer2();
             }
-            if (Input.GetKey(ControlsManager.instance.Player2Controls.MegaWeaponFireButton))
+            if (Input.GetKey(ControlsManager.instance.Player2Controls.MegaWeaponFireButton) || Input.GetKey(ControlsManager.instance.Player2Controls.MegaWeaponFireButtonGamePad))
             {
                 UnlockPlayer2();
             }
