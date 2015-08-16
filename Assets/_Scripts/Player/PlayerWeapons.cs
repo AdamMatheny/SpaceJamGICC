@@ -91,7 +91,6 @@ namespace Assets._Scripts.Player
 				SuperWeapon1 = SuperScripts[3];
 				break;
 			case WeaponType.VisualHindrance:
-				//other.GetComponent<PlayerWeapons> ().SuperWeapon1 = SuperScripts[4];
 				SuperWeapon1 = SuperScripts[4];
 				break;
 			case WeaponType.SuperDeflect:

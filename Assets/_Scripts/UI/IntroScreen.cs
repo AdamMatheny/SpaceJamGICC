@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Assets._Scripts.Managers;
+using Assets._Scripts.Audio;
 
 namespace Assets._Scripts.UI
 {
@@ -17,6 +18,11 @@ namespace Assets._Scripts.UI
             base.Show();
             StartCoroutine("WaitToShowNextScreen");
             ScreenAnimator.Play(AnimationName);
+
+            if (ScreenType == UI.ScreenType.Intro1)
+            {
+                AudioManager.instance.PlayBackgroundMusic(BackgroundMusicType.Intro);
+            }
         }
 
         void Update()

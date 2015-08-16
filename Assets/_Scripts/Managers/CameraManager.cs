@@ -26,7 +26,7 @@ namespace Assets._Scripts.Managers
             }
         }
 
-        private IEnumerator SetHinderenceForPlayer1()
+		private IEnumerator SetHinderenceForPlayer1()
         {
             Player1Camera.GetComponent<CameraFilterPack_TV_Vcr>().enabled = true;
             Player1Camera.GetComponent<CameraFilterPack_TV_VHS>().enabled = true;
@@ -35,7 +35,7 @@ namespace Assets._Scripts.Managers
             Player1Camera.GetComponent<CameraFilterPack_TV_VHS>().enabled = false;
         }
 
-        private IEnumerator SetHinderenceForPlayer2()
+		private IEnumerator SetHinderenceForPlayer2()
         {
             Player2Camera.GetComponent<CameraFilterPack_TV_Vcr>().enabled = true;
             Player2Camera.GetComponent<CameraFilterPack_TV_VHS>().enabled = true;
