@@ -1,16 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets._Scripts.Player;
+using Assets._Scripts.UI;
+using Assets._Scripts.Managers;
 
 namespace Assets._Scripts.Weapons
 {
 	public class SuperWeaponDisable : Weapon
 	{
-		
+		public GameObject[] players = new GameObject[1];
+		public GameObject activatingPlayer;
+
 		public override void Shoot(GameObject playerToAffect){
 			
 			try
 			{
+				players = GameObject.FindGameObjectsWithTag("Player");
+				
+				foreach(GameObject player in players){
+					
+					if(player.gameObject != playerToAffect.gameObject){
+						
+						activatingPlayer = player;
+					}
+				}
+
 
 				if(!playerToAffect.gameObject.GetComponent<PlayerControl> ().deflect){
 					
@@ -20,6 +34,8 @@ namespace Assets._Scripts.Weapons
 					
 					playerToAffect.gameObject.GetComponent<PlayerControl> ().deflect = false;
 				}
+				GUIManager.instance.GetGUIScreen(ScreenType.PlayScreen).GetComponent<PlayScreenControler> ().UnsetUpWeaponImageForPlayer(activatingPlayer.GetComponent<PlayerBase> ().mPlayerNumber);    
+
 			}
 			catch
 			{

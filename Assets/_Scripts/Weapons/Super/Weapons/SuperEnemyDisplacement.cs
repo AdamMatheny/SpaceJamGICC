@@ -2,6 +2,8 @@
 using System.Collections;
 using Assets._Scripts.Player;
 using Assets._Scripts.AI;
+using Assets._Scripts.UI;
+using Assets._Scripts.Managers;
 
 namespace Assets._Scripts.Weapons
 {
@@ -27,6 +29,8 @@ namespace Assets._Scripts.Weapons
 
 				activatingPlayer.GetComponent<PlayerControl> ().displace = true;
 				activatingPlayer.GetComponent<PlayerControl> ().EnemyDisplacement();
+				GUIManager.instance.GetGUIScreen(ScreenType.PlayScreen).GetComponent<PlayScreenControler> ().UnsetUpWeaponImageForPlayer(activatingPlayer.GetComponent<PlayerBase> ().mPlayerNumber);    
+
 			}
 			catch
 			{
