@@ -8,6 +8,8 @@ namespace Assets._Scripts.Player
 {
 	public class PlayerWeapons : MonoBehaviour
 	{
+		public Weapon[] SuperScripts = new Weapon[5];
+
 		public GameObject[] enemySpawners = new GameObject[1];
 
 		public bool canShoot;
@@ -60,7 +62,35 @@ namespace Assets._Scripts.Player
         public void UnlockSuperWeapon(WeaponType type)
         {
             Debug.Log("Unlock Weapon here! " + type);
-            //TODO Unlock Weapon;
+
+			switch (type) {
+				
+			case WeaponType.ControlSwap:
+				//other.GetComponent<PlayerWeapons> ().SuperWeapon1 = SuperScripts[0];
+				//other.GetComponent<PlayerWeapons> ().UnlockSuperWeapon("InvertControls");
+				SuperWeapon1 = SuperScripts[0];
+				break;
+			case WeaponType.EnemyDisplacement:
+				//other.GetComponent<PlayerWeapons> ().SuperWeapon1 = SuperScripts[1];
+				SuperWeapon1 = SuperScripts[1];
+				break;
+			case WeaponType.SlowMotion:
+				//other.GetComponent<PlayerWeapons> ().SuperWeapon1 = SuperScripts[2];
+				SuperWeapon1 = SuperScripts[2];
+				break;
+			case WeaponType.WeaponDisable:
+				//other.GetComponent<PlayerWeapons> ().SuperWeapon1 = SuperScripts[3];
+				SuperWeapon1 = SuperScripts[3];
+				break;
+			case WeaponType.VisualHindrance:
+				//other.GetComponent<PlayerWeapons> ().SuperWeapon1 = SuperScripts[4];
+				SuperWeapon1 = SuperScripts[4];
+				break;
+			default:
+				//other.GetComponent<PlayerWeapons> ().SuperWeapon1 = null;
+				SuperWeapon1 = null;
+				break;
+			}
         }
 	}
 }

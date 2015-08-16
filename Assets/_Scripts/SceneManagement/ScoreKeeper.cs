@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using Assets._Scripts.AI;
 using Assets._Scripts.Managers;
 
-public class ScoreKeeper : MonoBehaviour 
+public class ScoreKeeper : Singleton<ScoreKeeper> 
 {
 	public int mP1Score = 0;
 	public int mP2Score = 0;
