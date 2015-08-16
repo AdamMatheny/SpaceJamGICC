@@ -1,11 +1,18 @@
 ﻿using UnityEngine;
 using Assets._Scripts.Managers;
+using Assets._Scripts.Audio;
 
 namespace Assets._Scripts.UI
 {
     public class ControlsScreenController : GUIScreen
     {
         public ScreenType NextScreenToShow;
+
+        public override void Show()
+        {
+            base.Show();
+            AudioManager.instance.PlayBackgroundMusic(BackgroundMusicType.Menu);
+        }
 
         void Update()
         {
