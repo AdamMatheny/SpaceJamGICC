@@ -20,6 +20,8 @@ namespace Assets._Scripts.AI
 		// Use this for initialization
 		void Start () 
 		{
+            gameObject.transform.parent = MapManager.instance.EnemiesTransform;
+
 			mScoreKeeper = ScoreKeeper.instance;
 
 			foreach (PlayerBase potentialTarget in FindObjectsOfType<PlayerBase>())
