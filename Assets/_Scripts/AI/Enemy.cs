@@ -24,10 +24,8 @@ namespace Assets._Scripts.AI
 
 			foreach (PlayerBase potentialTarget in FindObjectsOfType<PlayerBase>())
 			{
-				Debug.Log ("Looking for Player");
 				if(potentialTarget.mPlayerNumber == mTargetPlayerNumber)
 				{
-					Debug.Log ("Found a player to target!");
 					mTargetPlayer= potentialTarget.gameObject;
 					mMovementComponent.mPlayer = potentialTarget.transform;
 					mFiringComponent.mTargetPlayer = potentialTarget.gameObject;

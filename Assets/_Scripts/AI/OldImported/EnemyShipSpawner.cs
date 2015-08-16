@@ -125,9 +125,17 @@ namespace Assets._Scripts.AI
 				{
 				case 1:
 					VehiclesManager.instance.Player1Ship.PlayerWeaponsComponent.canShoot = true;
+					if(mUseSwarm)
+					{
+						VehiclesManager.instance.Player1Ship.PlayerWeaponsComponent.tempFireRate = 3f;
+					}
 					break;
 				case 2:
 					VehiclesManager.instance.Player2Ship.PlayerWeaponsComponent.canShoot = true;
+					if(mUseSwarm)
+					{
+						VehiclesManager.instance.Player2Ship.PlayerWeaponsComponent.tempFireRate = 3f;
+					}
 					break;
 				default:
 					break;
