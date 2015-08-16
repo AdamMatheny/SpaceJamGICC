@@ -123,7 +123,7 @@ namespace Assets._Scripts.AI
 			/*if (other.tag == "Enemy" && mMoveTowardsPlayer) 
 				other.GetComponent<EnemyShipAI> ().EnemyShipDie ();*/ //Enemy ship doesn't have OnTrigger
 
-			if(other.tag == "Player Bullet")
+			if(other.tag == "PlayerBullet")
 			{
 				if(mShootable)
 				{
@@ -143,6 +143,11 @@ namespace Assets._Scripts.AI
 				{
 					other.GetComponent<PlayerBase>().mHitPlayer();
 				}
+			}
+
+			if(other.GetComponent<BulletBomb>() != null)
+			{
+				Destroy(this.gameObject);
 			}
 
 		}//END of OnTriggerEnter()

@@ -7,16 +7,23 @@ namespace Assets._Scripts.AI
 {
 	public class BulletBomb : MonoBehaviour 
 	{
-
+		float mSelfDestructTimer = 3f;
 		// Use this for initialization
 		void Start () {
 		
 		}
 		
 		// Update is called once per frame
-		void Update () {
-		
+		void Update () 
+		{
+			mSelfDestructTimer -= Time.deltaTime;
+
+			if(mSelfDestructTimer <= 0f)
+			{
+				Destroy (this.gameObject);
+			}
 		}
+
 
 		void OnTriggerEnter2D(Collider2D other)
 		{
