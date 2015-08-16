@@ -42,5 +42,10 @@ namespace Assets._Scripts.Managers
         {
             ShowScreen(ScreenType.MainMenu);
         }
+
+        public GUIScreen GetGUIScreen(ScreenType type)
+        {
+            return GUIScreens.First(screen => screen.ScreenType == type);
+        }
     }
 }

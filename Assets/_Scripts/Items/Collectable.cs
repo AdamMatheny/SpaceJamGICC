@@ -3,6 +3,7 @@ using Assets._Scripts.Weapons;
 using Assets._Scripts.Managers;
 using System;
 using System.Collections;
+using Assets._Scripts.UI;
 
 namespace Assets._Scripts.Items
 {
@@ -11,6 +12,8 @@ namespace Assets._Scripts.Items
         [Header("Collectable Info")]
         public WeaponType CollectableType;
         private int playerIndex;
+        [SerializeField]
+        private Sprite CollectableSprite;
 
         [Header("Collectable Movement")]
         public float movementSpeed;
@@ -44,6 +47,7 @@ namespace Assets._Scripts.Items
                     if (Vector3.Distance(gameObject.transform.position, VehiclesManager.instance.Player1Ship.gameObject.transform.position) < 1.5f)
                     {
                         VehiclesManager.instance.Player1Ship.PlayerWeaponsComponent.UnlockSuperWeapon(CollectableType);
+                        GUIManager.instance.GetGUIScreen(ScreenType.PlayScreen).GetComponent<PlayScreenControler>().SetUpWeaponImageForPlayer(1, CollectableSprite);
                         Destroy(gameObject);
                     }
                     break;
@@ -51,6 +55,7 @@ namespace Assets._Scripts.Items
                     if (Vector3.Distance(gameObject.transform.position, VehiclesManager.instance.Player2Ship.gameObject.transform.position) < 1.5f)
                     {
                         VehiclesManager.instance.Player2Ship.PlayerWeaponsComponent.UnlockSuperWeapon(CollectableType);
+                        GUIManager.instance.GetGUIScreen(ScreenType.PlayScreen).GetComponent<PlayScreenControler>().SetUpWeaponImageForPlayer(2, CollectableSprite);
                         Destroy(gameObject);
                     }
                     break;
