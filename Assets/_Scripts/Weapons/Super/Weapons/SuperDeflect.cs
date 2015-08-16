@@ -2,6 +2,8 @@
 using System.Collections;
 using Assets._Scripts.Player;
 using Assets._Scripts.AI;
+using Assets._Scripts.Managers;
+using Assets._Scripts.UI;
 
 namespace Assets._Scripts.Weapons
 {
@@ -26,7 +28,9 @@ namespace Assets._Scripts.Weapons
 				}
 
 				activatingPlayer.GetComponent<PlayerControl> ().deflect = true;
-				//activatingPlayer.GetComponent<PlayerControl> ().Deflect();
+
+				//GUIManager.instance.GetGUIScreen(ScreenType.PlayScreen).GetComponent<PlayScreenControler>().UnsetUpWeaponImageForPlayer(int playerIndex)
+				GUIManager.instance.GetGUIScreen(ScreenType.PlayScreen).GetComponent<PlayScreenControler> ().UnsetUpWeaponImageForPlayer(activatingPlayer.GetComponent<PlayerBase> ().mPlayerNumber);    
 			}
 			catch
 			{
