@@ -162,7 +162,7 @@ namespace Assets._Scripts.Player
             HorizontalAxisName = ControlsManager.instance.Player1Controls.HorizontalAxis;
             VerticalAxisName = ControlsManager.instance.Player1Controls.VerticalAxis;
             SuperWeaponButton = ControlsManager.instance.Player1Controls.MegaWeaponFireButton;
-            SuperWeaponButtonGamepad = ControlsManager.instance.Player1Controls.BasicFireButtonGamePad;
+            SuperWeaponButtonGamepad = ControlsManager.instance.Player1Controls.MegaWeaponFireButtonGamePad;
         }
 
         public void SetUpControlsAsPlayer2()
@@ -170,7 +170,7 @@ namespace Assets._Scripts.Player
             HorizontalAxisName = ControlsManager.instance.Player2Controls.HorizontalAxis;
             VerticalAxisName = ControlsManager.instance.Player2Controls.VerticalAxis;
             SuperWeaponButton = ControlsManager.instance.Player2Controls.MegaWeaponFireButton;
-            SuperWeaponButtonGamepad = ControlsManager.instance.Player2Controls.BasicFireButtonGamePad;
+            SuperWeaponButtonGamepad = ControlsManager.instance.Player2Controls.MegaWeaponFireButtonGamePad;
         }
 	}
 }
