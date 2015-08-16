@@ -43,6 +43,8 @@ namespace Assets._Scripts.AI
 
 		public void EnemyShipDie()
 		{
+
+			//Debug.Log ("Died");
 			if(mTargetPlayerNumber == 1)
 			{
 				mScoreKeeper.mP1Score ++;
@@ -55,7 +57,9 @@ namespace Assets._Scripts.AI
 			}
 			if(mDeathEffect != null)
 			{
-				Instantiate(mDeathEffect, Vector3.zero, Quaternion.identity);
+				Debug.Log("Create Death Effect");
+
+				Instantiate(mDeathEffect, transform.position, Quaternion.identity);
 			}
 			Destroy(this.gameObject);
 		}
