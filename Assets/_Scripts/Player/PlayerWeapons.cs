@@ -8,6 +8,8 @@ namespace Assets._Scripts.Player
 {
 	public class PlayerWeapons : MonoBehaviour
 	{
+		public GameObject gunDamage;
+
 		public Weapon[] SuperScripts = new Weapon[5];
 
 		public GameObject[] enemySpawners = new GameObject[1];
@@ -43,6 +45,14 @@ namespace Assets._Scripts.Player
 		}
 		
 		public void Update(){
+
+			if (canShoot) {
+
+				gunDamage.SetActive (false);
+			} else {
+
+				gunDamage.SetActive (true);
+			}
 
 			if (canShoot) {
 			

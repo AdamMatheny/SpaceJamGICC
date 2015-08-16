@@ -89,13 +89,18 @@ namespace Assets._Scripts.Player
 				rgbd2D.velocity = new Vector2 (rgbd2D.velocity.x, 0);
 			}
 
-			if ((Input.GetKeyDown (SuperWeaponButton) || (Input.GetKeyDown (SuperWeaponButtonGamepad))) && (gameObject.GetComponent<PlayerBase> ().PlayerWeaponsComponent.SuperWeapon1 != null)) {
+			if ((Input.GetKeyDown (SuperWeaponButton) || (Input.GetKeyDown (SuperWeaponButtonGamepad)))) {
 
 				//I think I had some horizontal check thing here, screw that though ~ Jonathan
 
-				gameObject.GetComponent<PlayerBase>().PlayerWeaponsComponent.ShootSuperWeapon1(otherPlayer);
-				gameObject.GetComponent<PlayerBase> ().PlayerWeaponsComponent.SuperWeapon1 = null;
-                AudioManager.instance.PlayMegaWeaponSound(MegaWeaponType.EnemyDisplacement);
+				if((gameObject.GetComponent<PlayerBase> ().PlayerWeaponsComponent.SuperWeapon1 != null)){
+
+					Debug.Log("Use Power Up");
+					gameObject.GetComponent<PlayerBase>().PlayerWeaponsComponent.ShootSuperWeapon1(otherPlayer);
+					gameObject.GetComponent<PlayerBase> ().PlayerWeaponsComponent.SuperWeapon1 = null;
+					AudioManager.instance.PlayMegaWeaponSound(MegaWeaponType.EnemyDisplacement);
+				}
+
 			}
 		}
 		#region supers
