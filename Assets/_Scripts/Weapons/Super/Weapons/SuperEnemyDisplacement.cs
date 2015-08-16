@@ -4,6 +4,7 @@ using Assets._Scripts.Player;
 using Assets._Scripts.AI;
 using Assets._Scripts.UI;
 using Assets._Scripts.Managers;
+using Assets._Scripts.Audio;
 
 namespace Assets._Scripts.Weapons
 {
@@ -17,6 +18,8 @@ namespace Assets._Scripts.Weapons
 	
 			try
 			{
+				AudioManager.instance.PlayMegaWeaponSound(MegaWeaponType.EnemyDisplacement);
+
 				players = GameObject.FindGameObjectsWithTag("Player");
 
 				foreach(GameObject player in players){

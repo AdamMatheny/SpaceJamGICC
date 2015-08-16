@@ -57,7 +57,7 @@ namespace Assets._Scripts.AI
 			}
 			if(mDeathEffect != null)
 			{
-				Debug.Log("Create Death Effect");
+				//Debug.Log("Create Death Effect");
 
 				Instantiate(mDeathEffect, transform.position, Quaternion.identity);
 			}

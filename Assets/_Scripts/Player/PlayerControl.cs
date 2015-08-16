@@ -98,7 +98,6 @@ namespace Assets._Scripts.Player
 					Debug.Log("Use Power Up");
 					gameObject.GetComponent<PlayerBase>().PlayerWeaponsComponent.ShootSuperWeapon1(otherPlayer);
 					gameObject.GetComponent<PlayerBase> ().PlayerWeaponsComponent.SuperWeapon1 = null;
-					AudioManager.instance.PlayMegaWeaponSound(MegaWeaponType.EnemyDisplacement);
 				}
 
 			}
