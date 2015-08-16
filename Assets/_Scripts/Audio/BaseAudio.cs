@@ -8,6 +8,7 @@ namespace Assets._Scripts.Audio
     public enum ShipWhiteSoundType { ShootBasic, ShootUpgraded, TakeDamage };
     public enum MenuSoundType { MenuEnter, MenuBack, SetReady };
     public enum BackgroundMusicType { Intro, Menu, Level1, Level2, Level3, Level4, Level5, Credits };
+    public enum MegaWeaponType { EnemyDisplacement, SlowMotion, InvertedControls, ScreenBlur, WeaponDisable };
 
     public class BaseAudio : MonoBehaviour
     {

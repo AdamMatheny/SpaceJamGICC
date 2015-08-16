@@ -17,6 +17,8 @@ namespace Assets._Scripts.Managers
         [SerializeField]
         private List<ShipWhiteSound> WhiteShipSoundList;
         [SerializeField]
+        private List<MegaWeaponSound> MegaWeaponsSoundList;
+        [SerializeField]
         private List<MenuSound> MenuSoundList;
 
         [Header("Lists of Music")]
@@ -67,6 +69,11 @@ namespace Assets._Scripts.Managers
             MenuSoundList.First(sound => sound.soundType == type).Play();
         }
 
+        public void PlayMegaWeaponSound(MegaWeaponType type)
+        {
+            MegaWeaponsSoundList.First(sound => sound.soundType == type).Play();
+        }
+
         public void PlayBackgroundMusic(BackgroundMusicType type)
         {
             BackgroundMusicList.ForEach(sound => sound.Stop());
@@ -79,6 +86,7 @@ namespace Assets._Scripts.Managers
             BlueShipSoundList.ForEach(sound => sound.SetVolume(value));
             PinkShipSoundList.ForEach(sound => sound.SetVolume(value));
             WhiteShipSoundList.ForEach(sound => sound.SetVolume(value));
+            MegaWeaponsSoundList.ForEach(sound => sound.SetVolume(value));
             MenuSoundList.ForEach(sound => sound.SetVolume(value));
 
             if (!RedShipSoundList.First(sound => sound.soundType == ShipRedSoundType.ShootBasic).IsPlaying())
@@ -94,6 +102,7 @@ namespace Assets._Scripts.Managers
             BlueShipSoundList.ForEach(sound => sound.SetVolume(value));
             PinkShipSoundList.ForEach(sound => sound.SetVolume(value));
             WhiteShipSoundList.ForEach(sound => sound.SetVolume(value));
+            MegaWeaponsSoundList.ForEach(sound => sound.SetVolume(value));
             MenuSoundList.ForEach(sound => sound.SetVolume(value));
 
             CurrentSoundVolume = value;

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets._Scripts.Managers;
+using Assets._Scripts.Audio;
 
 namespace Assets._Scripts.Player
 {
@@ -20,7 +21,9 @@ namespace Assets._Scripts.Player
 		[SerializeField]
 		public string VerticalAxisName; 
 		[SerializeField]
-		private KeyCode SuperWeaponButton; 
+		private KeyCode SuperWeaponButton;
+        [SerializeField]
+        private KeyCode SuperWeaponButtonGamepad; 
 		
 		[Header("Movement Variables")]
 		[SerializeField]
@@ -30,7 +33,7 @@ namespace Assets._Scripts.Player
 		public float mSpeedModTimer = 0f;
 
 		void Start(){
-			
+
 			players = GameObject.FindGameObjectsWithTag ("Player"); //Might of got this wrong, will check later ~ Jonathan
 			rgbd2D = GetComponent<Rigidbody2D> (); //Get the RigidBody
 			
@@ -71,12 +74,13 @@ namespace Assets._Scripts.Player
 				rgbd2D.velocity = new Vector2 (rgbd2D.velocity.x, 0);
 			}
 
-			if (Input.GetKeyDown (SuperWeaponButton) && (gameObject.GetComponent<PlayerBase> ().PlayerWeaponsComponent.SuperWeapon1 != null)) {
+			if ((Input.GetKeyDown (SuperWeaponButton) || (Input.GetKeyDown (SuperWeaponButtonGamepad))) && (gameObject.GetComponent<PlayerBase> ().PlayerWeaponsComponent.SuperWeapon1 != null)) {
 
 				//I think I had some horizontal check thing here, screw that though ~ Jonathan
 
 				gameObject.GetComponent<PlayerBase>().PlayerWeaponsComponent.ShootSuperWeapon1(otherPlayer);
 				gameObject.GetComponent<PlayerBase> ().PlayerWeaponsComponent.SuperWeapon1 = null;
+                AudioManager.instance.PlayMegaWeaponSound(MegaWeaponType.EnemyDisplacement);
 			}
 		}
 		#region supers
@@ -129,6 +133,7 @@ namespace Assets._Scripts.Player
             HorizontalAxisName = ControlsManager.instance.Player1Controls.HorizontalAxis;
             VerticalAxisName = ControlsManager.instance.Player1Controls.VerticalAxis;
             SuperWeaponButton = ControlsManager.instance.Player1Controls.MegaWeaponFireButton;
+            SuperWeaponButtonGamepad = ControlsManager.instance.Player1Controls.BasicFireButtonGamePad;
         }
 
         public void SetUpControlsAsPlayer2()
@@ -136,6 +141,7 @@ namespace Assets._Scripts.Player
             HorizontalAxisName = ControlsManager.instance.Player2Controls.HorizontalAxis;
             VerticalAxisName = ControlsManager.instance.Player2Controls.VerticalAxis;
             SuperWeaponButton = ControlsManager.instance.Player2Controls.MegaWeaponFireButton;
+            SuperWeaponButtonGamepad = ControlsManager.instance.Player2Controls.BasicFireButtonGamePad;
         }
 	}
 }
