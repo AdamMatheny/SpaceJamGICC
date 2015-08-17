@@ -78,10 +78,10 @@ namespace Assets._Scripts.Player
 				//other.GetComponent<PlayerWeapons> ().UnlockSuperWeapon("InvertControls");
 				SuperWeapon1 = SuperScripts[0];
 				break;
-			case WeaponType.EnemyDisplacement:
+			//case WeaponType.EnemyDisplacement:
 				//other.GetComponent<PlayerWeapons> ().SuperWeapon1 = SuperScripts[1];
-				SuperWeapon1 = SuperScripts[1];
-				break;
+				//SuperWeapon1 = SuperScripts[1];
+				//break;
 			case WeaponType.SlowMotion:
 				//other.GetComponent<PlayerWeapons> ().SuperWeapon1 = SuperScripts[2];
 				SuperWeapon1 = SuperScripts[2];

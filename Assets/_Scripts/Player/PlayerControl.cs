@@ -70,7 +70,7 @@ namespace Assets._Scripts.Player
 				if(mFireRateModTimer <= 0f)
 				{
 					mFireRateMod = 1.0f;
-					GetComponent<PlayerWeapons> ().fireRate = .3f;
+					GetComponent<PlayerWeapons> ().fireRate = .2f;
 				}
 			}
 

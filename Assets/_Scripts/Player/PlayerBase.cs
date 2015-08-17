@@ -35,7 +35,7 @@ namespace Assets._Scripts.Player
 			case 2:
 				Debug.Log("BadShoot");
 				PlayerControlComponent.mFireRateMod = 2f;
-				PlayerWeaponsComponent.fireRate = .6f;
+				PlayerWeaponsComponent.fireRate = .4f;
 				PlayerControlComponent.mFireRateModTimer = 3.0f;
 				break;
 			case 3:
