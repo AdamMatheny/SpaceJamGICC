@@ -10,7 +10,7 @@ namespace Assets._Scripts.AI
 		
 		public GameObject mPlayer = null;
 		public float mBulletSpeed = 20.0f;
-		private float mSelfDestructTimer = 5.0f;
+		public float mSelfDestructTimer = 5.0f;
 		private ScoreKeeper mScoreKeeper;
 		public bool mShootable;
 		public bool mAimAtPlayer = false;
@@ -22,11 +22,25 @@ namespace Assets._Scripts.AI
 
 		public GameObject bulletExplosion;
 
+		public int mBulletTargetNumber = 0;
+
 		public void Start()
 		{
             gameObject.transform.parent = MapManager.instance.ParticlesTransform;
-
-			mScoreKeeper = FindObjectOfType<ScoreKeeper>();
+			switch (mBulletTargetNumber)
+			{
+			case 1:
+				mPlayer = VehiclesManager.instance.Player1Ship.gameObject;
+				break;
+			case 2:
+				mPlayer = VehiclesManager.instance.Player2Ship.gameObject;
+				
+				break;
+			default:
+				//mPlayer = VehiclesManager.instance.Player1Ship.gameObject;
+				break;
+			}
+			mScoreKeeper = ScoreKeeper.instance;
 
 			//Vector2 bulletForce;
 

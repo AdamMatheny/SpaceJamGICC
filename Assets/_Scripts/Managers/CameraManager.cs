@@ -44,5 +44,37 @@ namespace Assets._Scripts.Managers
             Player2Camera.GetComponent<CameraFilterPack_TV_Vcr>().enabled = false;
             Player2Camera.GetComponent<CameraFilterPack_TV_VHS>().enabled = false;
         }
+
+		//Set effect for shorter amount of time for boss ~Adam
+		public void SetBossTeleportVisual(int playerIndex)
+		{
+			switch (playerIndex)
+			{
+			case 1:
+				StartCoroutine("BossTeleportPlayer1");
+				break;
+			case 2:
+				StartCoroutine("BossTeleportPlayer2");
+				break;
+			}
+		}
+		
+		private IEnumerator BossTeleportPlayer1()
+		{
+			Player1Camera.GetComponent<CameraFilterPack_TV_Vcr>().enabled = true;
+			Player1Camera.GetComponent<CameraFilterPack_TV_VHS>().enabled = true;
+			yield return new WaitForSeconds(1.0f);
+			Player1Camera.GetComponent<CameraFilterPack_TV_Vcr>().enabled = false;
+			Player1Camera.GetComponent<CameraFilterPack_TV_VHS>().enabled = false;
+		}
+		
+		private IEnumerator BossTeleportPlayer2()
+		{
+			Player2Camera.GetComponent<CameraFilterPack_TV_Vcr>().enabled = true;
+			Player2Camera.GetComponent<CameraFilterPack_TV_VHS>().enabled = true;
+			yield return new WaitForSeconds(0.5f);
+			Player2Camera.GetComponent<CameraFilterPack_TV_Vcr>().enabled = false;
+			Player2Camera.GetComponent<CameraFilterPack_TV_VHS>().enabled = false;
+		}
     }
 }

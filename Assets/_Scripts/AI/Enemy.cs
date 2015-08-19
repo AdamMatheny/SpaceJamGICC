@@ -24,15 +24,26 @@ namespace Assets._Scripts.AI
 
 			mScoreKeeper = ScoreKeeper.instance;
 
-			foreach (PlayerBase potentialTarget in FindObjectsOfType<PlayerBase>())
+			switch (mTargetPlayerNumber)
 			{
-				if(potentialTarget.mPlayerNumber == mTargetPlayerNumber)
-				{
-					mTargetPlayer= potentialTarget.gameObject;
-					mMovementComponent.mPlayer = potentialTarget.transform;
-					mFiringComponent.mTargetPlayer = potentialTarget.gameObject;
-				}
+			case 1:
+				mTargetPlayer = VehiclesManager.instance.Player1Ship.gameObject;
+				break;
+			case 2:
+				mTargetPlayer = VehiclesManager.instance.Player2Ship.gameObject;
+				
+				break;
+			default:
+				mTargetPlayer = VehiclesManager.instance.Player1Ship.gameObject;
+				break;
 			}
+
+
+			mMovementComponent.mPlayer = mTargetPlayer.transform;
+			mFiringComponent.mTargetPlayer = mTargetPlayer.gameObject;
+
+
+		
 		}
 		
 		// Update is called once per frame

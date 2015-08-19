@@ -126,12 +126,22 @@ public class ScoreKeeper : Singleton<ScoreKeeper>
 		mP1Messages.enabled = true;
 		mP2Messages.enabled = true;
 		
-		if(mP1Wins >= 3)
+		if(mP1Wins >= 4)
+		{
+			mP1Messages.text = "Congratulations!";
+			mP2Messages.text = "Learn From This.";
+		}
+		else if(mP2Wins >= 4)
+		{
+			mP1Messages.text = "Learn From This.";
+			mP2Messages.text = "Congratulations!";
+		}
+		else if(mP1Wins == 3)
 		{
 			mP1Messages.text = "You Win!";
 			mP2Messages.text = "You Lose!";
 		}
-		else if(mP2Wins >= 3)
+		else if(mP2Wins == 3)
 		{
 			mP1Messages.text = "You Lose!";
 			mP2Messages.text = "You Win!";
@@ -166,18 +176,21 @@ public class ScoreKeeper : Singleton<ScoreKeeper>
 			
 			mRoundEndTimer = 5f;
 			
-			if(mP1Wins >=3 || mP2Wins >= 3)
+			mRoundNumber ++;
+			mP1Messages.enabled = false;
+			mP2Messages.enabled = false;
+
+			if(mP1Wins ==3 || mP2Wins == 3)
 			{
-			//	Application.LoadLevel(1);
+				mRoundNumber = 6;
+				//AudioManager.instance.PlayBackgroundMusic(BackgroundMusicType.Miniboss);
+
 
 			}
 			
 			
 			
-			mRoundNumber ++;
-			mP1Messages.enabled = false;
-			mP2Messages.enabled = false;
-			
+
 			
 			
 			mP1RoundKills = 0;
@@ -210,7 +223,7 @@ public class ScoreKeeper : Singleton<ScoreKeeper>
 				Instantiate(mRoundSuperPrefabs[mRoundNumber-1], Vector3.zero, Quaternion.identity);
 				mAudioSource.PlayOneShot (mSoundEffects[0]);
 				MapManager.instance.ShowBackground(mRoundNumber);
-
+				Debug.Log ("Playing music for round " + mRoundNumber);
 				switch(mRoundNumber)
 				{
 				case 1:
@@ -228,6 +241,9 @@ public class ScoreKeeper : Singleton<ScoreKeeper>
 				case 5:
 					AudioManager.instance.PlayBackgroundMusic(BackgroundMusicType.Level5);
 					break;
+				case 6:
+					AudioManager.instance.PlayBackgroundMusic(BackgroundMusicType.Miniboss);
+				break;
 				default:
 					AudioManager.instance.PlayBackgroundMusic(BackgroundMusicType.Level1);
 					break;
@@ -236,9 +252,9 @@ public class ScoreKeeper : Singleton<ScoreKeeper>
 			}
 			mRoundWinner = 0;
 			
-			if(mP1Wins >=3 || mP2Wins >= 3)
+			if(mP1Wins >=4 || mP2Wins >= 4)
 			{
-				Application.LoadLevel(1);
+				Application.LoadLevel(0);
 			}
 		}
 	}
