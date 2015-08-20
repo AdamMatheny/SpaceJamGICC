@@ -369,6 +369,12 @@ namespace Assets._Scripts.AI
 					EndBossFight();
 				}
 			}
+			
+			//Hit Player
+			if(other.GetComponent<PlayerBase>() != null)
+			{
+				other.GetComponent<PlayerBase>().mHitPlayer();
+			}
 
 		}
 
