@@ -69,7 +69,7 @@ namespace Assets._Scripts.Player
 
         public void UnlockSuperWeapon(WeaponType type)
         {
-            Debug.Log("Unlock Weapon here! " + type);
+            //Debug.Log("Unlock Weapon here! " + type);
 
 			switch (type) {
 				
@@ -78,10 +78,9 @@ namespace Assets._Scripts.Player
 				//other.GetComponent<PlayerWeapons> ().UnlockSuperWeapon("InvertControls");
 				SuperWeapon1 = SuperScripts[0];
 				break;
-			//case WeaponType.EnemyDisplacement:
-				//other.GetComponent<PlayerWeapons> ().SuperWeapon1 = SuperScripts[1];
-				//SuperWeapon1 = SuperScripts[1];
-				//break;
+			case WeaponType.EnemyDisplacement:
+				SuperWeapon1 = SuperScripts[1];
+				break;
 			case WeaponType.SlowMotion:
 				//other.GetComponent<PlayerWeapons> ().SuperWeapon1 = SuperScripts[2];
 				SuperWeapon1 = SuperScripts[2];

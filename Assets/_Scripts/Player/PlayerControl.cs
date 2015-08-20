@@ -7,11 +7,12 @@ namespace Assets._Scripts.Player
 {
 	public class PlayerControl : MonoBehaviour
 	{
-
+			
+		[Header("Super Weapon Booleans")]
 		public bool displace;
-
 		public bool deflect;
-		
+
+		[Header("Players")]
 		public GameObject[] players = new GameObject[0]; // ~ For checking the other player
 		public GameObject otherPlayer;
 		

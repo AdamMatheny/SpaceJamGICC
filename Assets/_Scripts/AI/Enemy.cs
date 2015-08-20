@@ -7,6 +7,9 @@ namespace Assets._Scripts.AI
 {
 	public class Enemy : MonoBehaviour 
 	{
+		public GameObject[] players = new GameObject[1];
+		public GameObject otherPlayer;
+
 		public int mTargetPlayerNumber;
 		public GameObject mTargetPlayer;
 		public EnemyMovement mMovementComponent;
@@ -20,6 +23,7 @@ namespace Assets._Scripts.AI
 		// Use this for initialization
 		void Start () 
 		{
+
             gameObject.transform.parent = MapManager.instance.EnemiesTransform;
 
 			mScoreKeeper = ScoreKeeper.instance;
@@ -42,7 +46,15 @@ namespace Assets._Scripts.AI
 			mMovementComponent.mPlayer = mTargetPlayer.transform;
 			mFiringComponent.mTargetPlayer = mTargetPlayer.gameObject;
 
+			players = GameObject.FindGameObjectsWithTag ("Player");
+			
+			foreach (GameObject player in players) {
+				
+				if(player != mTargetPlayer){
 
+					otherPlayer = player;
+				}
+			}
 		
 		}
 		
@@ -55,6 +67,43 @@ namespace Assets._Scripts.AI
 		public void EnemyShipDie()
 		{
 
+			if (mTargetPlayer.GetComponent<PlayerControl> ().displace) {
+
+
+				//Debug.Log ("Displace Enemies");
+				if(mTargetPlayerNumber == 1){
+
+					transform.position += new Vector3(100, 0, 0);
+					mScoreKeeper.mP2RoundKills -= 1;
+				}else{
+
+					transform.position -= new Vector3(100, 0, 0);
+					mScoreKeeper.mP2RoundKills -= 1;
+				}
+
+				mTargetPlayer = otherPlayer;
+				
+				mMovementComponent.mPlayer = otherPlayer.transform;
+				mFiringComponent.mTargetPlayer = otherPlayer.gameObject;
+				
+				mMovementComponent.mUsesSwarm = false;
+				mMovementComponent.mUsesLoop = false;
+				mMovementComponent.mRushPlayer = true;
+				mMovementComponent.mHasLooped = false;
+				mMovementComponent.mCurrentAIState = EnemyMovement.AIState.ApproachingSwarm;
+				mMovementComponent.mIsDisplaced = true;
+
+			} else {
+
+				if(mDeathEffect != null)
+				{
+					//Debug.Log("Create Death Effect");
+					
+					Instantiate(mDeathEffect, transform.position, Quaternion.identity);
+				}
+				Destroy(this.gameObject);
+			}
+
 			//Debug.Log ("Died");
 			if(mTargetPlayerNumber == 1)
 			{
@@ -66,13 +115,6 @@ namespace Assets._Scripts.AI
 				mScoreKeeper.mP2Score ++;
 				mScoreKeeper.mP2RoundKills++;
 			}
-			if(mDeathEffect != null)
-			{
-				//Debug.Log("Create Death Effect");
-
-				Instantiate(mDeathEffect, transform.position, Quaternion.identity);
-			}
-			Destroy(this.gameObject);
 		}
 
 		void OnTriggerEnter2D(Collider2D other)

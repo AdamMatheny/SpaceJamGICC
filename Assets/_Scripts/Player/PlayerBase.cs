@@ -28,12 +28,12 @@ namespace Assets._Scripts.Player
 			switch(rand){
 
 			case 1:
-				Debug.Log("SlowDown");
+				//Debug.Log("SlowDown");
 				PlayerControlComponent.mSpeedMod = 0.5f;
 				PlayerControlComponent.mSpeedModTimer = 3.0f;
 				break;
 			case 2:
-				Debug.Log("BadShoot");
+				//Debug.Log("BadShoot");
 				PlayerControlComponent.mFireRateMod = 2f;
 				PlayerWeaponsComponent.fireRate = .4f;
 				PlayerControlComponent.mFireRateModTimer = 3.0f;

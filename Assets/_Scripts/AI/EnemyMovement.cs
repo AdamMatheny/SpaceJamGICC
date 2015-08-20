@@ -13,6 +13,8 @@ namespace Assets._Scripts.AI
 		//The player's avatar ~Adam
 		public Transform mPlayer;
 
+		public bool mIsDisplaced;
+
 		public bool mUsesSwarm = false;
 
 		public bool mRushPlayer = false;
@@ -144,6 +146,15 @@ namespace Assets._Scripts.AI
 				}
 
 			}
+
+			if (mIsDisplaced) {
+
+				mUsesSwarm = false;
+				mRushPlayer = true;
+				//mHasLooped = false;
+				mCurrentAIState = EnemyMovement.AIState.ApproachingSwarm;
+			}
+
 		}
 
 
