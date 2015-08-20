@@ -3,6 +3,7 @@ using Assets._Scripts.Weapons;
 using Assets._Scripts.Managers;
 using Assets._Scripts.Audio;
 using Assets._Scripts.AI;
+using System.Collections;
 
 namespace Assets._Scripts.Player
 {
@@ -46,6 +47,11 @@ namespace Assets._Scripts.Player
 		
 		public void Update(){
 
+			if (BaseWeapon.isMega) {
+
+				tempFireRate = 0;
+			}
+
 			if (canShoot) {
 
 				gunDamage.SetActive (false);
@@ -65,6 +71,18 @@ namespace Assets._Scripts.Player
 					tempFireRate = fireRate;
 				}
 			}
+		}
+
+		public void MegaTimer(){
+
+			BaseWeapon.isMega = true;
+			StartCoroutine ("MegaTimerEnum");
+		}
+
+		private IEnumerator MegaTimerEnum(){
+
+			yield return new WaitForSeconds (6);
+			BaseWeapon.isMega = false;
 		}
 
         public void UnlockSuperWeapon(WeaponType type)
@@ -94,6 +112,9 @@ namespace Assets._Scripts.Player
 				break;
 			case WeaponType.SuperDeflect:
 				SuperWeapon1 = SuperScripts[5];
+				break;
+			case WeaponType.WeaponUpgrade:
+				SuperWeapon1 = SuperScripts[6];
 				break;
 			default:
 				//other.GetComponent<PlayerWeapons> ().SuperWeapon1 = null;

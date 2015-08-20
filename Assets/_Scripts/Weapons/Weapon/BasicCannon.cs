@@ -8,6 +8,7 @@ namespace Assets._Scripts.Weapons
 			
 			try
 			{
+
 				if(!isUpgraded){
 					
 					//Debug.Log("Created a basic bullet.");

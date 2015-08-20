@@ -2,10 +2,12 @@
 
 namespace Assets._Scripts.Weapons
 {
-    public enum WeaponType {  ControlSwap,  SlowMotion, WeaponDisable, VisualHindrance, SuperDeflect, EnemyDisplacement }
+    public enum WeaponType {  ControlSwap,  SlowMotion, WeaponDisable, VisualHindrance, SuperDeflect, EnemyDisplacement, WeaponUpgrade }
 
 	public class Weapon : MonoBehaviour
 	{
+
+		public bool isMega;
 		
 		[Header("Base Weapon Info")]
 		public int Damage;
