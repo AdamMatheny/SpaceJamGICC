@@ -34,9 +34,11 @@ namespace Assets._Scripts.Player
 				break;
 			case 2:
 				//Debug.Log("BadShoot");
-				PlayerControlComponent.mFireRateMod = 2f;
-				PlayerWeaponsComponent.fireRate = .4f;
-				PlayerControlComponent.mFireRateModTimer = 3.0f;
+				//PlayerControlComponent.mFireRateMod = 2f;
+				//PlayerWeaponsComponent.fireRate = .4f;
+				//PlayerControlComponent.mFireRateModTimer = 3.0f;
+				PlayerWeaponsComponent.BaseWeapon.isUpgraded = false;
+				PlayerWeaponsComponent.BaseWeapon.UpgradeTime();
 				break;
 			case 3:
 				//DowngradeWeapon

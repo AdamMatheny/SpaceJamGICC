@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 namespace Assets._Scripts.Weapons
 {
@@ -33,7 +34,7 @@ namespace Assets._Scripts.Weapons
 		
 		public virtual void Update(){
 			
-			if (isUpgraded) {
+			/*if (isUpgraded) {
 				
 				if (UpgradedDuration > 0) {
 					
@@ -44,7 +45,7 @@ namespace Assets._Scripts.Weapons
 					UpgradedDuration = UpgradedDurationStart;
 				}
 				
-			}
+			}*/
 		}
 		
 		[Header("Upgraded Projectile")] // ~ Jonathan
@@ -70,6 +71,17 @@ namespace Assets._Scripts.Weapons
 			{
 				Debug.Log("There was an error during creating a projectile");
 			}
+		}
+
+		public virtual void UpgradeTime(){
+
+			StartCoroutine ("UpgradeTimeEnum");
+		}
+
+		private IEnumerator UpgradeTimeEnum(){
+
+			yield return new WaitForSeconds(6);
+			isUpgraded = true;
 		}
 	}
 }
