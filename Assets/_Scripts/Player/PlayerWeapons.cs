@@ -11,6 +11,8 @@ namespace Assets._Scripts.Player
 	{
 		public GameObject gunDamage;
 
+		//public bool damageTheGun;
+
 		public Weapon[] SuperScripts = new Weapon[5];
 
 		public GameObject[] enemySpawners = new GameObject[1];
@@ -52,7 +54,7 @@ namespace Assets._Scripts.Player
 				tempFireRate = 0;
 			}
 
-			if (canShoot) {
+			if (canShoot && gameObject.GetComponent<PlayerWeapons> ().BaseWeapon.isUpgraded) {
 
 				gunDamage.SetActive (false);
 			} else {

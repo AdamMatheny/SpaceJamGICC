@@ -23,7 +23,7 @@ namespace Assets._Scripts.Player
 
 			StartCoroutine ("DamageParticle");
 
-			int rand = Random.Range (1, 4);
+			int rand = Random.Range (1, 3);
 
 			switch(rand){
 
