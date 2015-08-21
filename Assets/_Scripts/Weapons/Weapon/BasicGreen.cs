@@ -6,8 +6,8 @@ namespace Assets._Scripts.Weapons
 	{
 		public override void Shoot(GameObject playerToAffect){
 			
-			try
-			{
+			////try
+			////{
 				if(!isUpgraded){
 					
 					//Debug.Log("Created a basic bullet.");
@@ -43,11 +43,11 @@ namespace Assets._Scripts.Weapons
 					spawnedProjectileRight.transform.Rotate(new Vector3(0, 0, 45));
 					spawnedProjectileRight.Init(UpgradedDamage, UpgradedSpeed);
 				}
-			}
-			catch
-			{
-				Debug.Log("There was an error during creating a projectile");
-			}
+			////}
+			///catch
+			///{
+			///	Debug.Log("There was an error during creating a projectile");
+			///}
 		}
 	}
 }
