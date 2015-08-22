@@ -29,16 +29,16 @@ namespace Assets._Scripts.Weapons
 					
 					//Debug.Log("Created an upgraded triple bullet.");
 					
-					var spawnedProjectile = (Projectile)Instantiate(WeaponProjectile, gameObject.transform.position, gameObject.transform.rotation);
+				var spawnedProjectile = (Projectile)Instantiate(WeaponProjectile, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + 1.8f), gameObject.transform.rotation);
 					//spawnedProjectile.mPlayerNumber = playerNumber;
 					spawnedProjectile.Init(UpgradedDamage, UpgradedSpeed);
 					
-					var spawnedProjectileLeft = (Projectile)Instantiate(UpgradedWeaponProjectile, gameObject.transform.position, gameObject.transform.rotation);
+				var spawnedProjectileLeft = (Projectile)Instantiate(UpgradedWeaponProjectile, new Vector2(gameObject.transform.position.x + 1.3f, gameObject.transform.position.y), gameObject.transform.rotation);
 					//spawnedProjectileLeft.mPlayerNumber = playerNumber;
 					spawnedProjectileLeft.transform.Rotate(new Vector3(0, 0, -45));
 					spawnedProjectileLeft.Init(UpgradedDamage, UpgradedSpeed);
 					
-					var spawnedProjectileRight = (Projectile)Instantiate(UpgradedWeaponProjectile, gameObject.transform.position, gameObject.transform.rotation);
+				var spawnedProjectileRight = (Projectile)Instantiate(UpgradedWeaponProjectile, new Vector2(gameObject.transform.position.x - 1.3f, gameObject.transform.position.y), gameObject.transform.rotation);
 					//spawnedProjectileRight.mPlayerNumber = playerNumber;
 					spawnedProjectileRight.transform.Rotate(new Vector3(0, 0, 45));
 					spawnedProjectileRight.Init(UpgradedDamage, UpgradedSpeed);

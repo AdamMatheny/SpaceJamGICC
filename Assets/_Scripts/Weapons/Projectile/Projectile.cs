@@ -7,8 +7,8 @@ namespace Assets._Scripts.Weapons
 {
 	public class Projectile : MonoBehaviour
 	{
-		public bool rotate;
-		public Vector3 rotation;
+		//public bool rotate;
+		//public Vector3 rotation;
 
 		public bool isPlayerOne;
 		
@@ -22,7 +22,7 @@ namespace Assets._Scripts.Weapons
 			Damage = damage;
 			FlySpeed = flySpeed;
 
-			GetComponentInChildren<ParticleSystem> ().gameObject.transform.Rotate (rotation);
+			//GetComponentInChildren<ParticleSystem> ().gameObject.transform.Rotate (rotation);
 			
 			//ProjectileAnimator.ShowSpawnAnimaton;
 			StartCoroutine ("DieAfterTimeCoroutine");

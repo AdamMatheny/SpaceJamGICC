@@ -11,24 +11,23 @@ namespace Assets._Scripts.Weapons
 				if(!isUpgraded){
 					
 					//Debug.Log("Created a basic bullet.");
-					var spawnedProjectileLeft = (Projectile)Instantiate(WeaponProjectile, new Vector2(gameObject.transform.position.x - 1, gameObject.transform.position.y), gameObject.transform.rotation);
-					spawnedProjectileLeft.Init(Damage, Speed);
+					var spawnedProjectile = (Projectile)Instantiate(WeaponProjectile, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + 2), gameObject.transform.rotation);
+					spawnedProjectile.Init(Damage, Speed);
 
-					var spawnedProjectileRight = (Projectile)Instantiate(WeaponProjectile, new Vector2(gameObject.transform.position.x + 1, gameObject.transform.position.y), gameObject.transform.rotation);
-					spawnedProjectileRight.Init(Damage, Speed);
+
 				}else{
 					
 					//Debug.Log("Created an upgraded triple bullet.");
 					
-					var spawnedProjectile = (Projectile)Instantiate(WeaponProjectile, gameObject.transform.position, gameObject.transform.rotation);
+					var spawnedProjectile = (Projectile)Instantiate(WeaponProjectile, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 2, gameObject.transform.position.z), gameObject.transform.rotation);
 					spawnedProjectile.Init(UpgradedDamage, UpgradedSpeed);
 					
-					var spawnedProjectileLeft = (Projectile)Instantiate(UpgradedWeaponProjectile, gameObject.transform.position, gameObject.transform.rotation);
-					spawnedProjectileLeft.transform.Rotate(new Vector3(0, 0, -45));
+					var spawnedProjectileLeft = (Projectile)Instantiate(UpgradedWeaponProjectile, new Vector3(gameObject.transform.position.x - 2, gameObject.transform.position.y + 1, gameObject.transform.position.z), gameObject.transform.rotation);
+					//spawnedProjectileLeft.transform.Rotate(new Vector3(0, 0, -45));
 					spawnedProjectileLeft.Init(UpgradedDamage, UpgradedSpeed);
 					
-					var spawnedProjectileRight = (Projectile)Instantiate(UpgradedWeaponProjectile, gameObject.transform.position, gameObject.transform.rotation);
-					spawnedProjectileRight.transform.Rotate(new Vector3(0, 0, 45));
+					var spawnedProjectileRight = (Projectile)Instantiate(UpgradedWeaponProjectile, new Vector3(gameObject.transform.position.x + 2, gameObject.transform.position.y + 1, gameObject.transform.position.z), gameObject.transform.rotation);
+					//spawnedProjectileRight.transform.Rotate(new Vector3(0, 0, 45));
 					spawnedProjectileRight.Init(UpgradedDamage, UpgradedSpeed);
 				}
 			}
